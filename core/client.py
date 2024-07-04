@@ -266,31 +266,33 @@ class WebClient():
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
     
-    async def claimDrop(self):
+     async def claimNFT(self):
         try:
             contract_txn = {
-                'data': f'0x00000000',
-                'nonce': self.web3.eth.get_transaction_count(self.address),
+                'data': '0x00000000',
+                'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
-                'gasPrice': self.web3.eth.gas_price,
+                'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
                 'chainId': self.chain_id,
                 'to': '0xD540038B0B427238984E0341bA49F69CD80DC139',
                 'value': 0,
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
-            contract_txn['gas'] = int(gas*1.01)
+            contract_txn['gas'] = int(gas*1.05)
 
             status, tx_link = await self.send_tx(contract_txn)
             print(status, tx_link)
             if status == 1:
                 logger.success(f"{self.address} | claim drop | {tx_link}")
                 await asyncio.sleep(5)
+                return True
             else:
                 logger.error(f"claim drop | tx is failed | {tx_link}")
-        except Exception as error:
+                return False
+          except Exception as error:
             logger.error(error)
-            return False, error
+            return False
         
     async def check_data_token(self, token_address):
         try:
