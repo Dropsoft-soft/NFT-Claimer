@@ -1,12 +1,11 @@
 import asyncio
 import sys, time, random
 from core.client import WebClient
-from core.request import global_request
-from core.utils import WALLET_PROXIES, WALLETS
+from core.utils import WALLETS
 from core.__init__ import *
 from concurrent.futures import ThreadPoolExecutor
 from loguru import logger
-from user_data.config import DELAY_FROM, DELAY_TO, USE_PROXY, USE_TRANSFER
+from user_data.config import DELAY_FROM, DELAY_TO
 
 CHAIN = 'linea'
 
@@ -24,8 +23,7 @@ async def run_module(account_id, key):
         web3 = WebClient(
             account_id, key, CHAIN
         )
-        proxy = None
-        await web3.claimDrop()
+        result = await web3.claimNFT()
     except Exception as e:
         logger.error(e)
 
