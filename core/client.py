@@ -266,7 +266,7 @@ class WebClient():
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
     
-     async def claimNFT(self):
+    async def claimNFT(self):
         try:
             contract_txn = {
                 'data': '0x00000000',
@@ -290,7 +290,7 @@ class WebClient():
             else:
                 logger.error(f"claim drop | tx is failed | {tx_link}")
                 return False
-          except Exception as error:
+        except Exception as error:
             logger.error(error)
             return False
         
