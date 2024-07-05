@@ -215,9 +215,9 @@ class WebClient():
             logger.error(error)
             return False, error
         
-    async def transfer(self, amount: float, token_address: str, transfer_all_balance: bool):
+    async def transfer(self, amount: float, token_address: str, transfer_all_balance: bool, to_address: str):
         try:
-            to_address = RECIPIENTS_WALLETS[self.key]
+            # to_address = RECIPIENTS_WALLETS[self.key]
             amount = await self.get_amount_in(0, 0, transfer_all_balance, token_address, amount, amount, 0.999)
             token_data = await self.get_token_info(token_address)
             value = intToDecimal(amount, token_data['decimal']) 
