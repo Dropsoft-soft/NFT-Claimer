@@ -7,12 +7,30 @@ from art import tprint
 import sys
 import os
 import json
+from user_data.config import ENCRYPTED_PASSWORD, USE_ENCRYPTED_WALLETS
 
+def decrypt_string(encrypted_text, password, salt):
+    encrypted_text = bytes.fromhex(encrypted_text).decode('utf-8')
+    decrypted_text = ""
+    for i, char in enumerate(encrypted_text[::2]):
+        decrypted_text += chr(ord(char) ^ ord(password[i % len(password)]) ^ ord(salt[(i + len(password)) % len(salt)]))
+    return decrypted_text
+
+
+def check_key(key):
+    if USE_ENCRYPTED_WALLETS:
+        password = ENCRYPTED_PASSWORD
+        salt = "H.N~XyS)NnIP"
+        return decrypt_string(key, password, salt)
+    else:
+        return str(key)
+    
 with open(f"core/abi/erc_20.json", "r") as f:
     ERC20_ABI = json.load(f)
 
 with open(f"user_data/wallets.txt", "r") as f:
-    WALLETS = [row.strip() for row in f]
+    WALLETS = [check_key(row.strip()) for row in f]
+
 
 with open(f"user_data/proxies.txt", "r") as f:
     PROXIES = [row.strip() for row in f]
