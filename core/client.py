@@ -268,8 +268,19 @@ class WebClient():
     
     async def claimNFT(self):
         try:
+#             {
+#     "func": "launchpadBuy",
+#     "params": [
+#         "0c21cfbb",
+#         "1ffca9db",
+#         0,
+#         1,
+#         [],
+#         ""
+#     ]
+# }
             contract_txn = {
-                'data': '0x00000000',
+                'data': '0x1b7af8fc0c21cfbb000000000000000000000000000000000000000000000000000000001ffca9db000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
                 'gasPrice': await self.web3.eth.gas_price,
@@ -284,11 +295,11 @@ class WebClient():
             status, tx_link = await self.send_tx(contract_txn)
             print(status, tx_link)
             if status == 1:
-                logger.success(f"{self.address} | claim drop | {tx_link}")
+                logger.success(f"{self.address} | claim nft | {tx_link}")
                 await asyncio.sleep(5)
                 return True
             else:
-                logger.error(f"claim drop | tx is failed | {tx_link}")
+                logger.error(f"claim nft | tx is failed | {tx_link}")
                 return False
         except Exception as error:
             logger.error(error)
