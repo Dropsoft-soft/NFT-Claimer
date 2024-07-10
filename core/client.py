@@ -286,7 +286,7 @@ class WebClient():
                 'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
                 'chainId': self.chain_id,
-                'to': '0xc0A2a606913A49a0B0a02F682C833EFF3829B4bA',
+                'to': '0xBcFa22a36E555c507092FF16c1af4cB74B8514C8',
                 'value': 0,
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
