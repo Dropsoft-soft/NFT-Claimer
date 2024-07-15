@@ -6,6 +6,7 @@ from core.__init__ import *
 from concurrent.futures import ThreadPoolExecutor
 from loguru import logger
 from user_data.config import DELAY_FROM, DELAY_TO
+from core.modules import *
 
 CHAIN = 'linea'
 
@@ -18,19 +19,32 @@ def get_wallets():
     ]
     return wallets
 
-async def run_module(account_id, key):
+async def run_module(module, account_id, key):
     try:
-        web3 = WebClient(
-            account_id, key, CHAIN
-        )
-        result = await web3.claimNFT()
+        asyncio.run(module(account_id, key))
     except Exception as e:
         logger.error(e)
 
 def _async_run_module(module, account_id, key):
     asyncio.run(run_module(account_id, key))
 
+def get_module(string):
+    if string == 'linea_layer3_nft':
+        return linea_layer3_nft
+    else:
+        return
+
 if __name__ == "__main__":
+    MODULE = int(input('''
+MODULE:
+1. Linea Layer3 mint NFT
+2. Scroll carnival mint NFT               
+''')
+)   
+    active_module = None
+    if MODULE == 1:
+        active_module = linea_layer3_nft
+    
     if sys.platform == 'win32':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     wallets = get_wallets()
@@ -39,7 +53,7 @@ if __name__ == "__main__":
         for _, account in enumerate(wallets, start=1):
             executor.submit(
                 _async_run_module,
-                WebClient,
+                active_module,
                 account.get("id"),
                 account.get("key")
             )
