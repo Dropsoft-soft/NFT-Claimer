@@ -280,13 +280,13 @@ class WebClient():
 #     ]
 # }
             contract_txn = {
-                'data': '0x00000000',
+                'data': '0x731133e9000000000000000000000000' + self.address.lower()[2:] + '0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000',
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
                 'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
                 'chainId': self.chain_id,
-                'to': '0x3A21e152aC78f3055aA6b23693FB842dEFdE0213',
+                'to': Web3().to_checksum_address('0x5a77b45b6f5309b07110fe98e25a178eee7516c1'),
                 'value': 0,
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
