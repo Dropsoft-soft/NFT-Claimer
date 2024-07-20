@@ -44,7 +44,8 @@ MODULE:
     active_module = None
     if MODULE == 1:
         active_module = linea_layer3_nft
-    
+    if MODULE == 2: 
+        active_module 
     if sys.platform == 'win32':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     wallets = get_wallets()
