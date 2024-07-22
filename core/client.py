@@ -1,15 +1,17 @@
+import math
 from loguru import logger
 from web3 import Web3, AsyncHTTPProvider
 from web3.eth import AsyncEth
 from eth_account.messages import encode_defunct
-from .data import ABI_MINT_CONTRACT, DATA, MINT_CONTRACT
-from .utils import WALLET_PROXIES, WALLETS, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
+from .data import DATA, ABI_PHOSPHOR
+from .utils import WALLET_PROXIES, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
 from user_data.config import RETRY, USE_PROXY
 import asyncio
 import random
 import time
 from eth_utils import keccak
 from eth_abi import encode
+import requests
 import json
 
 class WebClient():
@@ -265,7 +267,58 @@ class WebClient():
         signed_message = self.web3.to_hex(
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
-    
+
+    def get_voucher(self) -> str:
+        logger.info(f"Trying to get response data from phosphor.")
+
+        url = "https://public-api.phosphor.xyz/v1/purchase-intents"
+
+        payload = json.dumps({
+            "buyer": {
+                "eth_address": self.address,
+            },
+            "listing_id": "fceb2be9-f9fd-458a-8952-9a0a6f873aff",
+            "provider": "MINT_VOUCHER",
+            "quantity": 1
+        })
+        headers = {
+            'Content-Type': 'application/json',
+            # 'Cookie': '__cf_bm=oOHsQm2q5AfX5_s32tobx38.w6_og.LTfCn8jNcuch4-1721682527-1.0.1.1-x_E0K8uirx0SbGwNuYnJuQG8sJbK48oAXVD7NBk09j2J3RTV4B.5jYc32HR3WDYgtF7aE7jhgWA_bFN26siomw'
+        }
+
+        response = requests.request("POST", url, headers=headers, data=payload)
+        if response.status_code > 300:
+            logger.info(f"Error in getting response data {response.status_code}. Sleep for 30 secs and try again.")
+            time.sleep(30)
+            self.get_voucher()
+        else:
+            response_data = response.json()
+
+            signature = response_data["data"]["signature"]
+
+            initial_recipient = self.web3.to_checksum_address(response_data["data"]["voucher"]["initial_recipient"])
+            initial_recipient_amount = int(response_data["data"]["voucher"]["initial_recipient_amount"])
+            net_recipient = self.web3.to_checksum_address(response_data["data"]["voucher"]["net_recipient"])
+            quantity = response_data["data"]["voucher"]["quantity"]
+            nonce = response_data["data"]["voucher"]["nonce"]
+            expiry = response_data["data"]["voucher"]["expiry"]
+            price = int(response_data["data"]["voucher"]["price"])
+            token_id = int(response_data["data"]["voucher"]["token_id"])
+            currency = self.web3.to_checksum_address(response_data["data"]["voucher"]["currency"])
+
+            voucher = (net_recipient,
+                       initial_recipient,
+                       initial_recipient_amount,
+                       quantity,
+                       nonce,
+                       expiry,
+                       price,
+                       token_id,
+                       currency,
+            )
+            print(response.text)
+            return voucher, signature
+
     async def claimNFT(self):
         try:
 #             {
@@ -279,16 +332,26 @@ class WebClient():
 #         ""
 #     ]
 # }
-            contract_txn = {
-                'data': '0x1b7af8fc0c21cfbb000000000000000000000000000000000000000000000000000000002968bd75000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                'nonce': await self.web3.eth.get_transaction_count(self.address),
+
+            supply_contract = self.web3.to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E')
+            contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
+
+            voucher, signature = self.get_voucher()
+
+            signature = self.clean_and_convert_hex_string(signature)
+
+
+            contract_txn = await contract.functions.mintWithVoucher(
+                voucher,
+                signature
+            ).build_transaction({
                 'from': self.address,
-                'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
+                'gasPrice': await self.web3.eth.gas_price,
+                'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'chainId': self.chain_id,
-                'to': Web3().to_checksum_address('0xbcfa22a36e555c507092ff16c1af4cb74b8514c8'),
                 'value': 0,
-            }
+            })
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
 
@@ -304,7 +367,25 @@ class WebClient():
         except Exception as error:
             logger.error(error)
             return False
-        
+
+
+    def clean_and_convert_hex_string(self, hex_string):
+        if hex_string.startswith('0x'):
+            hex_string = hex_string[2:]
+
+        hex_string = hex_string.strip()
+
+        valid_chars = "0123456789abcdefABCDEF"
+        for char in hex_string:
+            if char not in valid_chars:
+                raise ValueError(f"Invalid character '{char}' found in hexadecimal string")
+
+        if len(hex_string) % 2 != 0:
+            hex_string = '0' + hex_string
+
+        byte_data = bytes.fromhex(hex_string)
+        return byte_data
+
     async def check_data_token(self, token_address):
         try:
             token_contract  = self.web3.eth.contract(address=Web3.to_checksum_address(token_address), abi=ERC20_ABI)
