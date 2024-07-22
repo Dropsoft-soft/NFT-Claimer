@@ -9,6 +9,9 @@ from user_data.config import RETRY, USE_PROXY
 import asyncio
 import random
 import time
+from eth_utils import keccak
+from eth_abi import encode
+import json
 
 class WebClient():
     def __init__(self, id:int, key: str, chain: str):
