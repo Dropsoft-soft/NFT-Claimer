@@ -341,7 +341,7 @@ class WebClient():
             signature = self.clean_and_convert_hex_string(signature)
 
 
-            contract_txn = contract.functions.mintWithVoucher(
+            contract_txn = await contract.functions.mintWithVoucher(
                 voucher,
                 signature
             ).build_transaction({
@@ -350,7 +350,6 @@ class WebClient():
                 'gasPrice': await self.web3.eth.gas_price,
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'chainId': self.chain_id,
-                'to': Web3().to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E'),
                 'value': 0,
             })
             gas = await self.web3.eth.estimate_gas(contract_txn)
