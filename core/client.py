@@ -11,6 +11,7 @@ import random
 import time
 from eth_utils import keccak
 from eth_abi import encode
+import requests
 import json
 
 class WebClient():
@@ -267,11 +268,33 @@ class WebClient():
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
 
-    async def sign_tuple(self, _tuple) -> str:
-        message = encode_defunct(text=str(_tuple))
-        signed_message = self.web3.to_hex(
-            self.web3.eth.account.sign_message(message, private_key=self.key).signature)
-        return signed_message
+    def get_response_data(self) -> str:
+        logger.info(f"Trying to get response data from phosphor.")
+
+        url = "https://public-api.phosphor.xyz/v1/purchase-intents"
+
+        payload = json.dumps({
+            "buyer": {
+                "eth_address": self.address,
+            },
+            "listing_id": "fceb2be9-f9fd-458a-8952-9a0a6f873aff",
+            "provider": "MINT_VOUCHER",
+            "quantity": 1
+        })
+        headers = {
+            'Content-Type': 'application/json',
+            # 'Cookie': '__cf_bm=oOHsQm2q5AfX5_s32tobx38.w6_og.LTfCn8jNcuch4-1721682527-1.0.1.1-x_E0K8uirx0SbGwNuYnJuQG8sJbK48oAXVD7NBk09j2J3RTV4B.5jYc32HR3WDYgtF7aE7jhgWA_bFN26siomw'
+        }
+
+        response = requests.request("POST", url, headers=headers, data=payload)
+        if response.status_code > 300:
+            logger.info(f"Error in getting response data {response.status_code}. Sleep for 30 secs and try again.")
+            time.sleep(30)
+            self.get_response_data()
+        else:
+            response_data = response.json()
+            print(response.text)
+            return response_data
 
     async def claimNFT(self):
         try:
@@ -289,20 +312,30 @@ class WebClient():
 
             supply_contract = self.web3.to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E')
             contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
-            deadline = math.floor(time.time() + 60 * 30)
 
-            voucher = (self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
-                       self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
-                       0,
-                       1,
-                       1,
-                       deadline,
-                       0,
-                       1,
-                       self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
+            response_data = self.get_response_data()
+
+            signature = response_data["data"]["signature"]
+            initial_recipient = response_data["data"]["voucher"]["initial_recipient"]
+            initial_recipient_amount = response_data["data"]["voucher"]["initial_recipient_amount"]
+            net_recipient = response_data["data"]["voucher"]["net_recipient"]
+            quantity = response_data["data"]["voucher"]["quantity"]
+            nonce = response_data["data"]["voucher"]["nonce"]
+            expiry = response_data["data"]["voucher"]["expiry"]
+            price = response_data["data"]["voucher"]["price"]
+            token_id = response_data["data"]["voucher"]["token_id"]
+            currency = response_data["data"]["voucher"]["currency"]
+
+            voucher = (net_recipient,
+                       initial_recipient,
+                       initial_recipient_amount,
+                       quantity,
+                       nonce,
+                       expiry,
+                       price,
+                       token_id,
+                       currency,
             )
-
-            signature = await self.sign_tuple(voucher)
 
             contract_txn = contract.functions.mintWithVoucher(
                 voucher,
