@@ -1,16 +1,14 @@
+import math
 from loguru import logger
 from web3 import Web3, AsyncHTTPProvider
 from web3.eth import AsyncEth
 from eth_account.messages import encode_defunct
-from .data import ABI_MINT_CONTRACT, DATA, MINT_CONTRACT
-from .utils import WALLET_PROXIES, WALLETS, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
+from .data import DATA, ABI_PHOSPHOR
+from .utils import WALLET_PROXIES, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
 from user_data.config import RETRY, USE_PROXY
 import asyncio
 import random
 import time
-from eth_utils import keccak
-from eth_abi import encode
-import json
 
 class WebClient():
     def __init__(self, id:int, key: str, chain: str):
@@ -265,7 +263,13 @@ class WebClient():
         signed_message = self.web3.to_hex(
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
-    
+
+    async def sign_tuple(self, _tuple) -> str:
+        message = encode_defunct(text=str(_tuple))
+        signed_message = self.web3.to_hex(
+            self.web3.eth.account.sign_message(message, private_key=self.key).signature)
+        return signed_message
+
     async def claimNFT(self):
         try:
 #             {
@@ -279,16 +283,36 @@ class WebClient():
 #         ""
 #     ]
 # }
-            contract_txn = {
-                'data': '0x1b7af8fc0c21cfbb000000000000000000000000000000000000000000000000000000002968bd75000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000c000000000000000000000000000000000000000000000000000000000000000e000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-                'nonce': await self.web3.eth.get_transaction_count(self.address),
+
+            supply_contract = self.web3.to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E')
+            contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
+            deadline = math.floor(time.time() + 60 * 30)
+
+            voucher = (self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
+                       self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
+                       0,
+                       1,
+                       1,
+                       deadline,
+                       0,
+                       1,
+                       self.web3.to_checksum_address('0x0000000000000000000000000000000000000000'),
+            )
+
+            signature = await self.sign_tuple(voucher)
+
+            contract_txn = contract.functions.mintWithVoucher(
+                voucher,
+                signature
+            ).build_transaction({
                 'from': self.address,
-                'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
+                'gasPrice': await self.web3.eth.gas_price,
+                'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'chainId': self.chain_id,
-                'to': Web3().to_checksum_address('0xbcfa22a36e555c507092ff16c1af4cb74b8514c8'),
+                'to': Web3().to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E'),
                 'value': 0,
-            }
+            })
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
 
