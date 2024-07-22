@@ -268,7 +268,7 @@ class WebClient():
             self.web3.eth.account.sign_message(message, private_key=self.key).signature)
         return signed_message
 
-    def get_response_data(self) -> str:
+    def get_voucher(self) -> str:
         logger.info(f"Trying to get response data from phosphor.")
 
         url = "https://public-api.phosphor.xyz/v1/purchase-intents"
@@ -290,11 +290,34 @@ class WebClient():
         if response.status_code > 300:
             logger.info(f"Error in getting response data {response.status_code}. Sleep for 30 secs and try again.")
             time.sleep(30)
-            self.get_response_data()
+            self.get_voucher()
         else:
             response_data = response.json()
+
+            signature = response_data["data"]["signature"]
+
+            initial_recipient = self.web3.to_checksum_address(response_data["data"]["voucher"]["initial_recipient"])
+            initial_recipient_amount = int(response_data["data"]["voucher"]["initial_recipient_amount"])
+            net_recipient = self.web3.to_checksum_address(response_data["data"]["voucher"]["net_recipient"])
+            quantity = response_data["data"]["voucher"]["quantity"]
+            nonce = response_data["data"]["voucher"]["nonce"]
+            expiry = response_data["data"]["voucher"]["expiry"]
+            price = int(response_data["data"]["voucher"]["price"])
+            token_id = int(response_data["data"]["voucher"]["token_id"])
+            currency = self.web3.to_checksum_address(response_data["data"]["voucher"]["currency"])
+
+            voucher = (net_recipient,
+                       initial_recipient,
+                       initial_recipient_amount,
+                       quantity,
+                       nonce,
+                       expiry,
+                       price,
+                       token_id,
+                       currency,
+            )
             print(response.text)
-            return response_data
+            return voucher, signature
 
     async def claimNFT(self):
         try:
@@ -313,29 +336,10 @@ class WebClient():
             supply_contract = self.web3.to_checksum_address('0xAd626D0F8BE64076C4c27a583e3df3878874467E')
             contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
 
-            response_data = self.get_response_data()
+            voucher, signature = self.get_voucher()
 
-            signature = response_data["data"]["signature"]
-            initial_recipient = response_data["data"]["voucher"]["initial_recipient"]
-            initial_recipient_amount = response_data["data"]["voucher"]["initial_recipient_amount"]
-            net_recipient = response_data["data"]["voucher"]["net_recipient"]
-            quantity = response_data["data"]["voucher"]["quantity"]
-            nonce = response_data["data"]["voucher"]["nonce"]
-            expiry = response_data["data"]["voucher"]["expiry"]
-            price = response_data["data"]["voucher"]["price"]
-            token_id = response_data["data"]["voucher"]["token_id"]
-            currency = response_data["data"]["voucher"]["currency"]
+            signature = self.clean_and_convert_hex_string(signature)
 
-            voucher = (net_recipient,
-                       initial_recipient,
-                       initial_recipient_amount,
-                       quantity,
-                       nonce,
-                       expiry,
-                       price,
-                       token_id,
-                       currency,
-            )
 
             contract_txn = contract.functions.mintWithVoucher(
                 voucher,
@@ -364,7 +368,25 @@ class WebClient():
         except Exception as error:
             logger.error(error)
             return False
-        
+
+
+    def clean_and_convert_hex_string(self, hex_string):
+        if hex_string.startswith('0x'):
+            hex_string = hex_string[2:]
+
+        hex_string = hex_string.strip()
+
+        valid_chars = "0123456789abcdefABCDEF"
+        for char in hex_string:
+            if char not in valid_chars:
+                raise ValueError(f"Invalid character '{char}' found in hexadecimal string")
+
+        if len(hex_string) % 2 != 0:
+            hex_string = '0' + hex_string
+
+        byte_data = bytes.fromhex(hex_string)
+        return byte_data
+
     async def check_data_token(self, token_address):
         try:
             token_contract  = self.web3.eth.contract(address=Web3.to_checksum_address(token_address), abi=ERC20_ABI)
