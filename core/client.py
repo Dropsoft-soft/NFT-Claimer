@@ -286,7 +286,7 @@ class WebClient():
             # 'Cookie': '__cf_bm=oOHsQm2q5AfX5_s32tobx38.w6_og.LTfCn8jNcuch4-1721682527-1.0.1.1-x_E0K8uirx0SbGwNuYnJuQG8sJbK48oAXVD7NBk09j2J3RTV4B.5jYc32HR3WDYgtF7aE7jhgWA_bFN26siomw'
         }
 
-        response = requests.request("POST", url, headers=headers, data=payload)
+        response = requests.request("POST", url, headers=headers, data=payload, proxies=self.proxy)
         if response.status_code > 300:
             logger.info(f"Error in getting response data {response.status_code}. Sleep for 30 secs and try again.")
             time.sleep(30)
