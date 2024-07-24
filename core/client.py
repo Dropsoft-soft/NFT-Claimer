@@ -3,6 +3,8 @@ from loguru import logger
 from web3 import Web3, AsyncHTTPProvider
 from web3.eth import AsyncEth
 from eth_account.messages import encode_defunct
+
+from core.request import global_request
 from .data import DATA, ABI_PHOSPHOR
 from .utils import WALLET_PROXIES, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
 from user_data.config import RETRY, USE_PROXY
@@ -277,7 +279,7 @@ class WebClient():
             "buyer": {
                 "eth_address": self.address,
             },
-            "listing_id": "849e42a7-45dd-4a5b-a895-f5496e46ade2",
+            "listing_id": "3d595f3e-6609-405f-ba3c-d1e28381f11a",
             "provider": "MINT_VOUCHER",
             "quantity": 1
         })
@@ -285,8 +287,13 @@ class WebClient():
             'Content-Type': 'application/json',
             # 'Cookie': '__cf_bm=oOHsQm2q5AfX5_s32tobx38.w6_og.LTfCn8jNcuch4-1721682527-1.0.1.1-x_E0K8uirx0SbGwNuYnJuQG8sJbK48oAXVD7NBk09j2J3RTV4B.5jYc32HR3WDYgtF7aE7jhgWA_bFN26siomw'
         }
-
-        response = requests.request("POST", url, headers=headers, data=payload, proxies=self.proxy)
+        prxies = None
+        if USE_PROXY:
+            prxies = {
+              "http"  : self.proxy, 
+              "https" : self.proxy, 
+            }
+        response = requests.request("POST", url, headers=headers, data=payload, proxies=prxies)
         if response.status_code > 300:
             logger.info(f"Error in getting response data {response.status_code}. Sleep for 30 secs and try again.")
             time.sleep(30)
@@ -316,12 +323,12 @@ class WebClient():
                        token_id,
                        currency,
             )
-            print(response.text)
+            # print(response.text)
             return voucher, signature
 
     async def claimNFT(self):
         try:
-            supply_contract = self.web3.to_checksum_address('0x3f0A935c8f3Eb7F9112b54bD3b7fd19237E441Ee')
+            supply_contract = self.web3.to_checksum_address('0x3EB78e881b28B71329344dF622Ea3A682538EC6a')
             contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
 
             voucher, signature = self.get_voucher()
