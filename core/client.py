@@ -279,7 +279,7 @@ class WebClient():
             "buyer": {
                 "eth_address": self.address,
             },
-            "listing_id": "3d595f3e-6609-405f-ba3c-d1e28381f11a",
+            "listing_id": "d3542d49-273c-4f2d-9d33-8904c773ed14",
             "provider": "MINT_VOUCHER",
             "quantity": 1
         })
