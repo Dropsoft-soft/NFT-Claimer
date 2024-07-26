@@ -10,3 +10,4 @@ tqdm==4.65.0
 eth-account==0.8.0
 eth_utils
 eth_abi
+questionary

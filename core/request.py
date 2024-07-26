@@ -12,15 +12,9 @@ ERROR_CODE_EXCEPTION = -1
 ERROR_CODE_FAILED_REQUEST = -2
 
 
-async def global_request(wallet, method="get", request_retry=0, proxy: str = None, need_sleep= False, **kwargs):
+async def global_request(wallet, method="get", request_retry=0, need_sleep= False, **kwargs):
     async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
-        if proxy is not None:
-            session.proxies.update(
-                {
-                    "http": f"{proxy}",
-                    "https": f"{proxy}"
-                }
-            )
+       
 
         if request_retry > MAX_RETRY:
             return
