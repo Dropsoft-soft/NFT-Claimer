@@ -59,11 +59,11 @@ class BaseSummer(WebClient):
             contract_txn['gas'] = int(gas*1.05)
             status, tx_link = await self.send_tx(contract_txn)
             if status == 1:
-                logger.success(f"{self.address} | claim nft | {tx_link}")
+                logger.success(f"[{self.id}] {self.address} | claim nft | {tx_link}")
                 await asyncio.sleep(5)
                 return True
             else:
-                logger.error(f"claim nft | tx is failed | {tx_link}")
+                logger.error(f"[{self.id}] {self.address} | claim nft | tx is failed | {tx_link}")
                 return False
         except Exception as error:
             logger.error(error)

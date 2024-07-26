@@ -34,7 +34,7 @@ def get_module():
         choices=[
             Choice("1) Mint linea layer3 NFT", linea_layer3_nft),
             Choice("2) Mint Base summer NFT", base_summer_nft),
-            Choice("3) Mint scroll NFT", scroll_mint_username),
+            Choice("3) Mint Scroll Nickname NFT", scroll_mint_username),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",
@@ -42,7 +42,7 @@ def get_module():
     ).ask()
     if result == "exit":
         print("\nSubscribe – https://t.me/@web3sftwr\n")
-        print("Donate me: 0xDEEF1cAb244Bb0f3A8f16C497B4380C0E8328FE3")
+        print("Donate me: 0x8cC0B0c49286b804Db02bd3a9412ec2bafF19d53")
         sys.exit()
     return result
 
