@@ -42,7 +42,6 @@ def get_module():
     ).ask()
     if result == "exit":
         print("\nSubscribe – https://t.me/@web3sftwr\n")
-        print("Donate me: 0x8cC0B0c49286b804Db02bd3a9412ec2bafF19d53")
         sys.exit()
     return result
 
