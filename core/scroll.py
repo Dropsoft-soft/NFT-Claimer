@@ -90,7 +90,7 @@ class ScrollCanvas(WebClient):
         
 # 0xC47300428b6AD2c7D03BB76D05A176058b47E6B0
 # 0x39fb5E85C7713657c2D9E869E974FF1e0B06F20C
-# https://canvas.scroll.cat/badge/check?badge=0x3dacAd961e5e2de850F5E027c70b56b5Afa5DfeD&recipient=0x387c6e7fe88042966aCF9EAc1852E0F101E4b37D
+# https://canvas.scroll.cat/badge/check?badge=0x3dacAd961e5e2de850F5E027c70b56b5Afa5DfeD&recipient=
 
 
 
