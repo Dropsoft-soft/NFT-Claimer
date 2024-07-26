@@ -6,6 +6,11 @@
 🔔 CHANNEL: https://t.me/web3sftwr
 💰 DONATION EVM ADDRESS: 0x8cC0B0c49286b804Db02bd3a9412ec2bafF19d53
 
+## Functionality
+1.Mint linea layer3 NFT
+2.Mint base summer NFT
+3.Mint username for scroll campain
+
 ## User_data
 
 `wallets.txt` - put evm private keys 1 key = 1 line
