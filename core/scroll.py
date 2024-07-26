@@ -8,9 +8,8 @@ from core.utils import intToDecimal
 from user_data.config import MINT_RANDOM_NICKNAME
 
 class ScrollCanvas(WebClient):
-    
     def __init__(self, id:int, key: str):
-        self.__init__(id, key, 'scroll')
+        super().__init__(id, key, 'scroll')
 
     async def mintUserName(self):
         try:
