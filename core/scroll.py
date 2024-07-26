@@ -5,8 +5,13 @@ from loguru import logger
 import asyncio, random
 
 from core.utils import intToDecimal
-from user_data.config import MINT_RANDOM_NICKNAME
-
+# from user_data.config import MINT_RANDOM_NICKNAME
+# Scroll sessions
+MINT_RANDOM_NICKNAME = [
+    'web3d',
+    'Web3dev',
+    'debweb3'
+]
 class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
         super().__init__(id, key, 'scroll')
