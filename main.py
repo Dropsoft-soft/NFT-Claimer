@@ -33,7 +33,8 @@ def get_module():
         "Select a method to get started",
         choices=[
             Choice("1) Mint linea layer3 NFT", linea_layer3_nft),
-            Choice("2) Mint Base summer NFT", scroll_base_summer_nft),
+            Choice("2) Mint Base summer NFT", base_summer_nft),
+            Choice("3) Mint scroll NFT", scroll_mint_username),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",

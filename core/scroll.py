@@ -4,31 +4,52 @@ from core.client import WebClient
 from loguru import logger
 import asyncio, random
 
-from core.utils import intToDecimal
+from core.request import global_request
+from core.utils import WALLET_PROXIES, intToDecimal
+from user_data.config import FEE_MULTIPLIER, USE_PROXY
 # from user_data.config import MINT_RANDOM_NICKNAME
 # Scroll sessions
 MINT_RANDOM_NICKNAME = [
-    'web3d',
-    'Web3dev',
-    'debweb3'
+    'web3dewr',
+    'Web3dev242',
+    'debweb3ew'
 ]
 class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
         super().__init__(id, key, 'scroll')
 
+
+    async def getSignature(self):
+        proxy = None
+        if USE_PROXY == True:
+            proxy = WALLET_PROXIES[self.key]
+        url = "https://canvas.scroll.cat/code/NTAQN/sig/0x9dBA8Ba2E1F00442b53775FCe236818BC73b1D48"
+        headers = {
+            'accept': 'application/json',
+            'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
+            'cache-control': 'no-cache',
+            'content-type': 'application/json',
+        }
+        status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=headers, proxy=proxy)
+        return status_code, response
+    
     async def mintUserName(self):
         try:
-            mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xB23AF8707c442f59BDfC368612Bd8DbCca8a7a5a'), abi=SCROLL_MAIN_ABI)
-            nickname = random.choice(MINT_RANDOM_NICKNAME)
-            bytes_for = '0000000000000000000000002edec0da3385611c59235fc711fafac5298cc0ca00000000000000000000000000000000000000000000000000000000669bb813000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000415cf4f6c164306ac991826f42b28ec937af990f48a6d13a7a9cf9b92eed0e6dd00b1eda3eaae791d7c8e4406d856feac5f323803bbd2d0c19dd0764c659e8227d1b00000000000000000000000000000000000000000000000000000000000000'
-            contract_txn = mint_contract.functions.mint(nickname,bytes_for).build_transaction({
+            mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
+            nickname = str(random.choice(MINT_RANDOM_NICKNAME))
+            code,response = await self.getSignature()
+            bytes_for = response['signature']
+            print(nickname)
+            contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
-                'gasPrice': await self.web3.eth.gas_price,
                 'gas': 0,
+                'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
+                'maxPriorityFeePerGas': await self.web3.eth.max_priority_fee,
                 'chainId': self.chain_id,
                 'value': intToDecimal(0.0005, 18),
             })
+            print(contract_txn)
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
 

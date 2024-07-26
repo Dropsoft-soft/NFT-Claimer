@@ -5,7 +5,7 @@ from loguru import logger
 import asyncio, random
 from core.request import global_request
 from core.utils import WALLET_PROXIES, intToDecimal
-from user_data.config import MINT_RANDOM_NICKNAME, USE_PROXY
+from user_data.config import USE_PROXY
 import json
 
 class BaseSummer(WebClient):

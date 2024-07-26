@@ -15,7 +15,7 @@ async def scroll_mint_username(account_id, key):
     )
     await web3.mintUserName()
 
-async def scroll_base_summer_nft(account_id, key):
+async def base_summer_nft(account_id, key):
     web3 = BaseSummer(
         account_id, key
     )
