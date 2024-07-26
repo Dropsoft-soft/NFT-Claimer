@@ -1,7 +1,7 @@
 import asyncio
 import sys, time, random
 from core.client import WebClient
-from core.utils import WALLETS
+from core.utils import WALLETS, sleeping
 from core.__init__ import *
 from concurrent.futures import ThreadPoolExecutor
 from loguru import logger
@@ -57,4 +57,4 @@ if __name__ == "__main__":
     for account in wallets:
         run_module(module, account.get("id"), account.get("key"))
         if account != wallets[-1]:
-            time.sleep(random.randint(DELAY_FROM, DELAY_TO))
+            sleeping(DELAY_FROM, DELAY_TO)

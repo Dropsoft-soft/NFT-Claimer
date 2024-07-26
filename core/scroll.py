@@ -7,13 +7,8 @@ import asyncio, random
 from core.request import global_request
 from core.utils import WALLET_PROXIES, intToDecimal
 from user_data.config import FEE_MULTIPLIER, USE_PROXY
-# from user_data.config import MINT_RANDOM_NICKNAME
-# Scroll sessions
-MINT_RANDOM_NICKNAME = [
-    'web3dewr',
-    'Web3dev242',
-    'debweb3ew'
-]
+from user_data.config import MINT_RANDOM_NICKNAME
+
 class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
         super().__init__(id, key, 'scroll')
@@ -23,7 +18,7 @@ class ScrollCanvas(WebClient):
         proxy = None
         if USE_PROXY == True:
             proxy = WALLET_PROXIES[self.key]
-        url = "https://canvas.scroll.cat/code/NTAQN/sig/0x9dBA8Ba2E1F00442b53775FCe236818BC73b1D48"
+        url = f"https://canvas.scroll.cat/code/NTAQN/sig/{self.address}"
         headers = {
             'accept': 'application/json',
             'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
@@ -39,7 +34,6 @@ class ScrollCanvas(WebClient):
             nickname = str(random.choice(MINT_RANDOM_NICKNAME))
             code,response = await self.getSignature()
             bytes_for = response['signature']
-            print(nickname)
             contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
@@ -49,14 +43,12 @@ class ScrollCanvas(WebClient):
                 'chainId': self.chain_id,
                 'value': intToDecimal(0.0005, 18),
             })
-            print(contract_txn)
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
 
             status, tx_link = await self.send_tx(contract_txn)
-            print(status, tx_link)
             if status == 1:
-                logger.success(f"{self.address} | claim nft | {tx_link}")
+                logger.success(f"{self.address} | nickname claim nft | {tx_link}")
                 await asyncio.sleep(5)
                 return True
             else:
