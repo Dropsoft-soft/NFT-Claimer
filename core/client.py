@@ -279,7 +279,7 @@ class WebClient():
             "buyer": {
                 "eth_address": self.address,
             },
-            "listing_id": "3c23e064-486d-46c5-8675-eabbc2e7d15e",
+            "listing_id": "86a8741b-28dd-42ca-9f2f-dfb173a62099",
             "provider": "MINT_VOUCHER",
             "quantity": 1
         })
@@ -328,7 +328,7 @@ class WebClient():
 
     async def claimNFT(self):
         try:
-            supply_contract = self.web3.to_checksum_address('0x3EB78e881b28B71329344dF622Ea3A682538EC6a')
+            supply_contract = self.web3.to_checksum_address('0x8975e0635586C6754C8D549Db0e3C7Ee807D9C8C')
             contract = self.web3.eth.contract(address=supply_contract, abi=ABI_PHOSPHOR)
 
             voucher, signature = self.get_voucher()
