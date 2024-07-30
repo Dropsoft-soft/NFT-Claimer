@@ -11,25 +11,26 @@ from user_data.config import MINT_RANDOM_NICKNAME
 
 class BeraTestnet(WebClient):
     def __init__(self, id:int, key: str):
-        super().__init__(id, key, 'scroll')
+        super().__init__(id, key, 'bera_testnet')
 
     async def mint_nft(self):
         try:
             contract_txn = {
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
-                'from': self.address,
+                'from': Web3().to_checksum_address(self.address),
                 'gas': 0,
                 'gasPrice': await self.web3.eth.gas_price,
+                'to': Web3().to_checksum_address('0x46B4b78d1Cd660819C934e5456363A359fde43f4'),
                 'chainId': self.chain_id,
                 'value': 250000000000000000,
-                "data": "0xb3ab66b00000000000000000000000000000000000000000000000000000000000000001",
+                'data': "0xb3ab66b00000000000000000000000000000000000000000000000000000000000000001",
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
 
             status, tx_link = await self.send_tx(contract_txn)
             if status == 1:
-                logger.success(f"[{self.id}] {self.address} | claimed nft nickname: {nickname} | {tx_link}")
+                logger.success(f"[{self.id}] {self.address} | claimed nft | {tx_link}")
                 await asyncio.sleep(5)
                 return True
             else:
