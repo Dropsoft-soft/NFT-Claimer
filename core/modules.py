@@ -1,5 +1,6 @@
 
 from core.baseSummer import BaseSummer
+from core.beranft import BeraTestnet
 from core.scroll import ScrollCanvas
 from core.client import WebClient
 
@@ -20,3 +21,10 @@ async def base_summer_nft(account_id, key):
         account_id, key
     )
     await web3.mint_nft()
+
+async def bera_nft(account_id, key):
+    web3 = BeraTestnet(
+        account_id, key
+    )
+    await web3.mint_nft()
+    
