@@ -8,7 +8,7 @@
 
 ## Functionality
 - Mint linea layer3 NFT
-- Mint base summer NFT
+- Mint [base summer NFT](https://wallet.coinbase.com/)
 - Mint username for scroll campain
 - Mint Bera NFT https://www.beramonium.io/
 
@@ -19,6 +19,7 @@
 
 ## Settings
 User data contains `config.py` proxies on/off and other settings
+Has ability to mint random NFT for base summer campain
 
 ## Installation
 Intall software via git and pull latest changes every day.
