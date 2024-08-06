@@ -36,6 +36,7 @@ def get_module():
             Choice("2) Mint Base summer NFT", base_summer_nft),
             Choice("3) Mint Scroll Nickname NFT", scroll_mint_username),
             Choice("4) Bera NFT", bera_nft),
+            Choice("5) Mint Scroll claim badges", scroll_mint_badges),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",

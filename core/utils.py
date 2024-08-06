@@ -34,7 +34,10 @@ with open(f"user_data/wallets.txt", "r") as f:
 
 with open(f"user_data/proxies.txt", "r") as f:
     PROXIES = [row.strip() for row in f]
-    
+
+with open(f"core/all_badges.json", "r") as f:
+    BADGE_LIST = json.load(f)
+
 def get_wallet_proxies(wallets, proxies):
     try:
         result = {}

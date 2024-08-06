@@ -1,39 +1,78 @@
+import json
+import time
 from web3 import Web3
 from core.abi.abi import SCROLL_MAIN_ABI
 from core.client import WebClient
 from loguru import logger
 import asyncio, random
-
+from random_user_agent.user_agent import UserAgent
 from core.request import global_request
-from core.utils import WALLET_PROXIES, intToDecimal
+from core.utils import BADGE_LIST, WALLET_PROXIES, intToDecimal
 from user_data.config import FEE_MULTIPLIER, USE_PROXY
 from user_data.config import MINT_RANDOM_NICKNAME
+user_agent_rotator = UserAgent(software_names=['chrome'], operating_systems=['windows', 'linux'])
 
 class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
         super().__init__(id, key, 'scroll')
-
+        self.headers = {
+            'accept': '*/*',
+            'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
+            'cache-control': 'no-cache',
+            'origin': 'https://scroll.io',
+            'pragma': 'no-cache',
+            'priority': 'u=1, i',
+            'referer': 'https://scroll.io/',
+            'sec-ch-ua': '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"macOS"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'cross-site',
+            'user-agent': user_agent_rotator.get_random_user_agent(),
+            'Content-Type': 'application/json'
+        }
 
     async def getSignature(self):
         proxy = None
         if USE_PROXY == True:
             proxy = WALLET_PROXIES[self.key]
         url = f"https://canvas.scroll.cat/code/NTAQN/sig/{self.address}"
-        headers = {
-            'accept': 'application/json',
-            'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
-            'cache-control': 'no-cache',
-            'content-type': 'application/json',
-        }
-        status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=headers, proxy=proxy)
+        
+        status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
         return status_code, response
     
+    async def is_elligable_address(self, domain, badge):
+        try:
+            proxy = None
+            if USE_PROXY == True:
+                proxy = WALLET_PROXIES[self.key]
+            url = f'{domain}/check?badge={badge}&recipient={self.address}'
+            
+            status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
+            return response
+        except Exception as error:
+            logger.error(error)
+            return False
+    
+    async def get_tx_for_badge(self, domain, badge):
+        try:
+            proxy = None
+            if USE_PROXY == True:
+                proxy = WALLET_PROXIES[self.key]
+            url = f'{domain}/claim?badge={badge}&recipient={self.address}'
+            status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
+            return response
+        except Exception as error:
+            logger.error(error)
+            return False
+
     async def mintUserName(self):
         try:
             mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
             nickname = str(random.choice(MINT_RANDOM_NICKNAME))
-            code,response = await self.getSignature()
-            bytes_for = response['signature']
+            # code,response = await self.getSignature()
+            bytes_for = '0x'
             contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
@@ -41,7 +80,7 @@ class ScrollCanvas(WebClient):
                 'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
                 'maxPriorityFeePerGas': await self.web3.eth.max_priority_fee,
                 'chainId': self.chain_id,
-                'value': intToDecimal(0.0005, 18),
+                'value': intToDecimal(0.001, 18),
             })
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.05)
@@ -83,14 +122,33 @@ class ScrollCanvas(WebClient):
                 logger.error(f"[{self.id}] {self.address} | claim nft | tx is failed | {tx_link}")
                 return False
         except Exception as error:
-                    logger.error(error)
-                    return False
-        
+                logger.error(error)
+                return False
+    
+    async def mint_all_available_badge(self):
+        badge_array = BADGE_LIST['badges']
+        logger.info(f'Received badges: {len(badge_array)}')
+        for jsonBadge in badge_array:
+            badge = jsonBadge['badgeContract']
+            domain = jsonBadge['baseUrl']
+            name = jsonBadge['name']
+            json = await self.is_elligable_address(domain, badge)
+            is_elligable = json['eligibility']
+            logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
+            if is_elligable == True:
+                await asyncio.sleep(5)
+                get_tx_data = await self.get_tx_for_badge(domain, badge)
+                await asyncio.sleep(5)
+                minted_badge = await self.mintFromJSON(get_tx_data)
+                await asyncio.sleep(5)
+                if minted_badge:
+                    logger.success(f'[{self.id}] Badge: {badge} minted')
+                else:
+                    logger.info(f'[{self.id}] Badge: {badge} not minted')
+            else: 
+                logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
 
         
 # 0xC47300428b6AD2c7D03BB76D05A176058b47E6B0
 # 0x39fb5E85C7713657c2D9E869E974FF1e0B06F20C
 # https://canvas.scroll.cat/badge/check?badge=0x3dacAd961e5e2de850F5E027c70b56b5Afa5DfeD&recipient=
-
-
-
