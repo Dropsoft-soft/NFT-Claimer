@@ -106,15 +106,15 @@ class ScrollCanvas(WebClient):
                 'data': data,
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
-                'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
-                'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee*FEE_MULTIPLIER),        
+                'maxFeePerGas': int(await self.web3.eth.gas_price),
+                'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee*FEE_MULTIPLIER),  
                 'gas': 0,
                 'chainId': self.chain_id,
                 'to': to,
                 'value': 0,
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
-            contract_txn['gas'] = int(gas*1.05)
+            contract_txn['gas'] = int(gas*FEE_MULTIPLIER)
             status, tx_link = await self.send_tx(contract_txn)
             if status == 1:
                 logger.success(f"[{self.id}] {self.address} | claim nft | {tx_link}")

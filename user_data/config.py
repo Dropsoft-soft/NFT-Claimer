@@ -4,7 +4,7 @@ DELAY_FROM = 20
 DELAY_TO = 120
 USE_ENCRYPTED_WALLETS = False
 ENCRYPTED_PASSWORD = ""
-FEE_MULTIPLIER = 1.1
+FEE_MULTIPLIER = 7.04
 MINT_RANDOM_SUMMER_BASE_NFT = False # If true will mint 1 random nfr instead of full list
 
 # Scroll sessions nickname to register list
