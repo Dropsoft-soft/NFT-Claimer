@@ -114,7 +114,7 @@ class ScrollCanvas(WebClient):
                 'value': 0,
             }
             gas = await self.web3.eth.estimate_gas(contract_txn)
-            contract_txn['maxFeePerGas'] = int(gas*1.05)
+            contract_txn['gas'] = int(gas*1.05)
             status, tx_link = await self.send_tx(contract_txn)
             if status == 1:
                 logger.success(f"[{self.id}] {self.address} | claim nft | {tx_link}")
@@ -142,16 +142,19 @@ class ScrollCanvas(WebClient):
                 await sleep(5, 30)
                 get_tx_data = await self.get_tx_for_badge(domain, badge)
                 logger.info('Get transaction data')
-                await sleep(5, 30)
                 minted_badge = await self.mintFromJSON(get_tx_data)
                 if minted_badge:
                     logger.success(f'[{self.id}] Badge: {badge} minted')
                     minted_counter += 1
+                    await sleep(5, 30)
                 else:
                     logger.info(f'[{self.id}] Badge: {badge} not minted')
             else: 
                 logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
-        logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
+        if minted_counter > 0:
+            logger.success(f'[{self.id} - {self.address}] Minted {minted_counter}')
+        else:
+            logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
         
 # 0xC47300428b6AD2c7D03BB76D05A176058b47E6B0
 # 0x39fb5E85C7713657c2D9E869E974FF1e0B06F20C
