@@ -73,12 +73,13 @@ class ScrollCanvas(WebClient):
             nickname = str(random.choice(MINT_RANDOM_NICKNAME))
             # code,response = await self.getSignature()
             bytes_for = '0x'
+            base_fee = (await self.web3.eth.max_priority_fee)
             contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
                 'gas': 0,
                 'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
-                'maxPriorityFeePerGas': await self.web3.eth.max_priority_fee,
+                'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee*FEE_MULTIPLIER),
                 'chainId': self.chain_id,
                 'value': intToDecimal(0.001, 18),
             })
@@ -106,7 +107,7 @@ class ScrollCanvas(WebClient):
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
                 'from': self.address,
                 'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
-                'maxPriorityFeePerGas': await self.web3.eth.max_priority_fee,                
+                'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee*FEE_MULTIPLIER),        
                 'gas': 0,
                 'chainId': self.chain_id,
                 'to': to,

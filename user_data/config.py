@@ -9,7 +9,6 @@ MINT_RANDOM_SUMMER_BASE_NFT = False # If true will mint 1 random nfr instead of 
 
 # Scroll sessions nickname to register list
 MINT_RANDOM_NICKNAME = [
-    'ruslan_001',
     'ruslan_0012',
     'ruslan_0014',
 ]
