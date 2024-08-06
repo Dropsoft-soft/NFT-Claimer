@@ -8,6 +8,7 @@ import sys
 import os
 import json
 from user_data.config import ENCRYPTED_PASSWORD, USE_ENCRYPTED_WALLETS
+from loguru import logger
 
 def decrypt_string(encrypted_text, password, salt):
     encrypted_text = bytes.fromhex(encrypted_text).decode('utf-8')
@@ -70,4 +71,12 @@ async def async_sleeping(from_sleep, to_sleep):
     for i in tqdm(range(x), desc='sleep ', bar_format='{desc}: {n_fmt}/{total_fmt}'):
         await asyncio.sleep(1)
 
+
+
+async def sleep(sleep_from: int, sleep_to: int):
+    delay = random.randint(sleep_from, sleep_to)
+
+    logger.info(f"💤 Sleep {delay} s.")
+    for _ in range(delay):
+        await asyncio.sleep(1)
 WALLET_PROXIES  = get_wallet_proxies(WALLETS, PROXIES)
