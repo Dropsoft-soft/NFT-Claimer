@@ -71,8 +71,8 @@ class ScrollCanvas(WebClient):
         try:
             mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
             nickname = str(random.choice(MINT_RANDOM_NICKNAME))
-            # code,response = await self.getSignature()
-            bytes_for = '0x'
+            code, response = await self.getSignature()
+            bytes_for = response['signature']
             base_fee = (await self.web3.eth.max_priority_fee)
             contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
