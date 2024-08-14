@@ -81,7 +81,7 @@ class ScrollCanvas(WebClient):
                 'maxFeePerGas': int(await self.web3.eth.gas_price),
                 'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee*FEE_MULTIPLIER),  
                 'chainId': self.chain_id,
-                'value': intToDecimal(0.001, 18),
+                'value': intToDecimal(0.0005, 18),
             })
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*FEE_MULTIPLIER)
