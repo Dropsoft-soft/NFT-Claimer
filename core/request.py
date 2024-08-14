@@ -40,7 +40,7 @@ async def global_request(wallet, method="get", request_retry=0, need_sleep= Fals
                     if need_sleep:
                         time.sleep(timing)
                     try:
-                        return status_code, await response.json()
+                        return status_code, await response.json(content_type=None)
                     except json.decoder.JSONDecodeError:
                         logger.info('The request success but not contain a JSON')
                         break

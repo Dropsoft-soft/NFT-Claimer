@@ -9,6 +9,11 @@ from user_data.config import DELAY_FROM, DELAY_TO
 from core.modules import *
 import questionary
 from questionary import Choice
+from datetime import datetime
+date_now = datetime.now().strftime("%d-%m-%Y")
+format = '<white>{time:HH:mm:ss}</white> | <bold><level>{level: <7}</level></bold> | <level>{message}</level>'
+logger.remove()
+logger.add(sys.stderr, format=format)
 
 def get_wallets():
     wallets = [
@@ -36,6 +41,7 @@ def get_module():
             Choice("2) Mint Base summer NFT", base_summer_nft),
             Choice("3) Mint Scroll Nickname NFT", scroll_mint_username),
             Choice("4) Bera NFT", bera_nft),
+            Choice("5) Mint Scroll claim badges", scroll_mint_badges),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",
