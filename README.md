@@ -10,6 +10,7 @@
 - Mint linea layer3 NFT
 - Mint [base summer NFT](https://wallet.coinbase.com/)
 - Mint username for scroll campain
+- Mint all available NFTs for scroll campain
 - Mint Bera NFT https://www.beramonium.io/
 
 ## User_data
