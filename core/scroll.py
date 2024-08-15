@@ -133,7 +133,7 @@ class ScrollCanvas(WebClient):
         minted_counter = 0
         for jsonBadge in badge_array:
             badge = jsonBadge['badgeContract']
-            domain = jsonBadge['baseUrl']
+            domain = jsonBadge['baseURL']
             name = jsonBadge['name']
             json = await self.is_elligable_address(domain, badge)
             is_elligable = json['eligibility']
