@@ -54,23 +54,6 @@
             "count": 72457
         },
         {
-            "name": "Unrevealed",
-            "image": "https://ipfs.io/ipfs/QmY9rG94E1qpc5NPs1zFTM1hCCTmv9kiRvMoZjGyxCJ2ZE/0.png",
-            "description": "Unrevealed scrolly badge.",
-            "badgeContract": "0x79b4f7492328D0Cc4ED0Ddaee08Cd42f0F36A4CC",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Scrolly",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Scrolly.jpg",
-                "origin": "https://hub.scrolly.xyz/",
-                "communityURL": null
-            },
-            "attesterProxy": "0x47a49cCfa1924D5b59cb400708199b6Ae8543D31",
-            "baseURL": "https://api.scrolly.xyz/api/badge",
-            "count": 65801
-        },
-        {
             "name": "OmniHub Badge",
             "image": "https://omnihub.nyc3.digitaloceanspaces.com/scroll/badge.png",
             "description": "This badge is designed for users who created a minimum one NFT collection through OmniHub to Scroll network.",
