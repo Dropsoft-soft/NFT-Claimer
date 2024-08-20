@@ -136,21 +136,22 @@ class ScrollCanvas(WebClient):
             domain = jsonBadge['baseURL']
             name = jsonBadge['name']
             json = await self.is_elligable_address(domain, badge)
-            is_elligable = json['eligibility']
-            logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
-            if is_elligable == True:
-                await sleep(5, 30)
-                get_tx_data = await self.get_tx_for_badge(domain, badge)
-                logger.info('Get transaction data')
-                minted_badge = await self.mintFromJSON(get_tx_data)
-                if minted_badge:
-                    logger.success(f'[{self.id}] Badge: {badge} minted')
-                    minted_counter += 1
+            if 'eligibility' in json:
+                is_elligable = json['eligibility']
+                logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
+                if is_elligable == True:
                     await sleep(5, 30)
-                else:
-                    logger.info(f'[{self.id}] Badge: {badge} not minted')
-            else: 
-                logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
+                    get_tx_data = await self.get_tx_for_badge(domain, badge)
+                    logger.info('Get transaction data')
+                    minted_badge = await self.mintFromJSON(get_tx_data)
+                    if minted_badge:
+                        logger.success(f'[{self.id}] Badge: {badge} minted')
+                        minted_counter += 1
+                        await sleep(5, 30)
+                    else:
+                        logger.info(f'[{self.id}] Badge: {badge} not minted')
+                else: 
+                    logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
         if minted_counter > 0:
             logger.success(f'[{self.id} - {self.address}] Minted {minted_counter}')
         else:
