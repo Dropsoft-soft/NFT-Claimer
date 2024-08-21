@@ -1,5 +1,5 @@
 from random import uniform
-
+from aiohttp import ClientSession
 import aiohttp
 from loguru import logger
 import time
@@ -13,9 +13,7 @@ ERROR_CODE_FAILED_REQUEST = -2
 
 
 async def global_request(wallet, method="get", request_retry=0, need_sleep= False, **kwargs):
-    async with aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False)) as session:
-       
-
+    async with ClientSession(trust_env=True) as session:
         if request_retry > MAX_RETRY:
             return
         retry = 0
