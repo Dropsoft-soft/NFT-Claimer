@@ -37,6 +37,7 @@ class ScrollCanvas(WebClient):
         proxy = None
         if USE_PROXY == True:
             proxy = WALLET_PROXIES[self.key]
+        
         url = f"https://canvas.scroll.cat/code/NTAQN/sig/{self.address}"
         
         status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
@@ -71,8 +72,8 @@ class ScrollCanvas(WebClient):
         try:
             mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
             nickname = str(random.choice(MINT_RANDOM_NICKNAME))
-            # code, response = await self.getSignature()
-            bytes_for = '0x'
+            code, response = await self.getSignature()
+            bytes_for = response['signature']
             base_fee = (await self.web3.eth.max_priority_fee)
             contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
                 'nonce': await self.web3.eth.get_transaction_count(self.address),
@@ -81,7 +82,7 @@ class ScrollCanvas(WebClient):
                 'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
                 'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee),  
                 'chainId': self.chain_id,
-                'value': intToDecimal(0.001, 18),
+                'value': intToDecimal(0.0005, 18),
             })
             gas = await self.web3.eth.estimate_gas(contract_txn)
             contract_txn['gas'] = int(gas*1.01)
@@ -132,73 +133,30 @@ class ScrollCanvas(WebClient):
         logger.info(f'Received badges: {len(badge_array)}')
         minted_counter = 0
         for jsonBadge in badge_array:
-            badge = jsonBadge['badgeContract']
-            domain = jsonBadge['baseURL']
             name = jsonBadge['name']
-            json = await self.is_elligable_address(domain, badge)
-            if 'eligibility' in json:
-                is_elligable = json['eligibility']
-                logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
-                if is_elligable == True:
-                    await sleep(5, 30)
-                    get_tx_data = await self.get_tx_for_badge(domain, badge)
-                    logger.info('Get transaction data')
-                    minted_badge = await self.mintFromJSON(get_tx_data)
-                    if minted_badge:
-                        logger.success(f'[{self.id}] Badge: {badge} minted')
-                        minted_counter += 1
+            if 'baseURL' in jsonBadge:
+                badge = jsonBadge['badgeContract']
+                domain = jsonBadge['baseURL']
+                json = await self.is_elligable_address(domain, badge)
+                if 'eligibility' in json:
+                    is_elligable = json['eligibility']
+                    logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
+                    if is_elligable == True:
                         await sleep(5, 30)
-                    else:
-                        logger.info(f'[{self.id}] Badge: {badge} not minted')
-                else: 
-                    logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
+                        get_tx_data = await self.get_tx_for_badge(domain, badge)
+                        logger.info('Get transaction data')
+                        minted_badge = await self.mintFromJSON(get_tx_data)
+                        if minted_badge:
+                            logger.success(f'[{self.id}] Badge: {badge} minted')
+                            minted_counter += 1
+                            await sleep(5, 30)
+                        else:
+                            logger.info(f'[{self.id}] Badge: {badge} not minted')
+                    else: 
+                        logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
+            else:
+                logger.info(f'Skip badge: {name}. ')
         if minted_counter > 0:
             logger.success(f'[{self.id} - {self.address}] Minted {minted_counter}')
         else:
             logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
-        
-# 0xC47300428b6AD2c7D03BB76D05A176058b47E6B0
-# 0x39fb5E85C7713657c2D9E869E974FF1e0B06F20C
-# https://canvas.scroll.cat/badge/check?badge=0x3dacAd961e5e2de850F5E027c70b56b5Afa5DfeD&recipient=
-
-# // {
-# //     "name": "Scroll Overlord",
-# //     "image": "https://xenobunny.s3.amazonaws.com/images/scroll-canvas/scroll-overlord-badge.png",
-# //     "description": "Participated in at least one Land War season on scroll.",
-# //     "badgeContract": "0xb2c69173829E23EE2876FBe13Ab474FEe101bc64",
-# //     "category": "Achievement",
-# //     "issuer": {
-# //         "name": "XenoBunny",
-# //         "logo": "https://scroll-eco-list.netlify.app/logos/XenoBunny.jpg",
-# //         "origin": "https://www.xenobunny.xyz/"
-# //     },
-# //     "native": false,
-# //     "eligibilityCheck": true
-# // },
-# // {
-# //     "name": "Scroll Domain Master Badge 🎖️",
-# //     "image": "https://assets.znsconnect.io/domain-master-badge.png",
-# //     "description": "Achieve the Scroll Domain Master Badge by minting 5 domains on Scroll. This prestigious badge marks you as a master in the domain space! Mint your domains now: https://zns.bio/",
-# //     "badgeContract": "0x55B867a955e4384bcAc03eF7F2E492F68016C152",
-# //     "category": "Achievement",
-# //     "issuer": {
-# //         "name": "ZNS Connect",
-# //         "logo": "https://scroll-eco-list.netlify.app/logos/ZNS Connect.jpg",
-# //         "origin": "https://www.znsconnect.io/"
-# //     },
-# //     "native": false,
-# //     "eligibilityCheck": true
-# // },
-# //         {
-# //     "name": "ZNS Badge",
-# //     "image": "https://assets.znsconnect.io/scroll-badge.jpg",
-# //     "description": "Earn this badge for minting a ZNS Domain on Scroll",
-# //     "badgeContract": "0x0246D65bA41Da3DB6dB55e489146eB25ca3634E5",
-# //     "issuer": {
-# //         "name": "ZNS Connect",
-# //         "logo": "https://scroll-eco-list.netlify.app/logos/ZNS Connect.jpg",
-# //         "origin": "https://www.znsconnect.io/"
-# //     },
-# //     "eligibilityCheck": true,
-# //     "native": false
-# // },

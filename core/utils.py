@@ -17,6 +17,17 @@ def decrypt_string(encrypted_text, password, salt):
         decrypted_text += chr(ord(char) ^ ord(password[i % len(password)]) ^ ord(salt[(i + len(password)) % len(salt)]))
     return decrypted_text
 
+def sleep(sleep_from: int, sleep_to: int):
+    delay = random.randint(sleep_from, sleep_to)
+    with tqdm(
+            total=delay,
+            desc="💤 Sleep",
+            bar_format="{desc}: |{bar:20}| {percentage:.0f}% | {n_fmt}/{total_fmt}",
+            colour="green"
+    ) as pbar:
+        for _ in range(delay):
+            time.sleep(1)
+            pbar.update(1)
 
 def check_key(key):
     if USE_ENCRYPTED_WALLETS:

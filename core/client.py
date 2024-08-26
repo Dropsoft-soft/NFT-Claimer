@@ -5,6 +5,7 @@ from web3.eth import AsyncEth
 from eth_account.messages import encode_defunct
 
 from core.request import global_request
+from core.retry import retry
 from .data import DATA, ABI_PHOSPHOR
 from .utils import WALLET_PROXIES, decimalToInt, intToDecimal, round_to, sleeping, ERC20_ABI
 from user_data.config import RETRY, USE_PROXY
@@ -196,7 +197,7 @@ class WebClient():
 
             except:
                 time_stamp = int(time.time())
-                if time_stamp-start_time_stamp > 100:
+                if time_stamp-start_time_stamp > 300:
                     logger.info(f'Did not receive tx_status for {100} sec, assuming that tx is a success')
                     return 1
                 await asyncio.sleep(1)
@@ -209,6 +210,7 @@ class WebClient():
         amount = amount*multiplier
         return amount
     
+    @retry
     async def send_tx(self, contract_txn):
         try:
             tx_hash = await self.sign_tx(contract_txn)
