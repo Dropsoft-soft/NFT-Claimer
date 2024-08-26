@@ -7,8 +7,9 @@ from loguru import logger
 import asyncio, random
 from random_user_agent.user_agent import UserAgent
 from core.request import global_request
+from core.retry import retry
 from core.utils import BADGE_LIST, WALLET_PROXIES, intToDecimal, sleep
-from user_data.config import FEE_MULTIPLIER, USE_PROXY
+from user_data.config import FEE_MULTIPLIER, MINT_REFS_FOR_NICKNAME, USE_PROXY
 from user_data.config import MINT_RANDOM_NICKNAME
 user_agent_rotator = UserAgent(software_names=['chrome'], operating_systems=['windows', 'linux'])
 
@@ -37,12 +38,13 @@ class ScrollCanvas(WebClient):
         proxy = None
         if USE_PROXY == True:
             proxy = WALLET_PROXIES[self.key]
-        
-        url = f"https://canvas.scroll.cat/code/NTAQN/sig/{self.address}"
+        ref = random.choice(list(MINT_REFS_FOR_NICKNAME))
+        url = f"https://canvas.scroll.cat/code/{ref}/sig/{self.address}"
         
         status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
         return status_code, response
-    
+   
+    @retry
     async def is_elligable_address(self, domain, badge):
         try:
             proxy = None
@@ -55,7 +57,7 @@ class ScrollCanvas(WebClient):
         except Exception as error:
             logger.error(error)
             return False
-    
+    @retry
     async def get_tx_for_badge(self, domain, badge):
         try:
             proxy = None
@@ -67,7 +69,7 @@ class ScrollCanvas(WebClient):
         except Exception as error:
             logger.error(error)
             return False
-
+    @retry  
     async def mintUserName(self):
         try:
             mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
@@ -98,7 +100,7 @@ class ScrollCanvas(WebClient):
         except Exception as error:
             logger.error(error)
             return False
-        
+    @retry  
     async def mintFromJSON(self, json):
         try:
             data = json['tx']['data']
@@ -127,7 +129,7 @@ class ScrollCanvas(WebClient):
         except Exception as error:
                 logger.error(error)
                 return False
-    
+        
     async def mint_all_available_badge(self):
         badge_array = BADGE_LIST['badges']
         logger.info(f'Received badges: {len(badge_array)}')

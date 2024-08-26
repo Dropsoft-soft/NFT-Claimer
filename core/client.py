@@ -210,7 +210,6 @@ class WebClient():
         amount = amount*multiplier
         return amount
     
-    @retry
     async def send_tx(self, contract_txn):
         try:
             tx_hash = await self.sign_tx(contract_txn)

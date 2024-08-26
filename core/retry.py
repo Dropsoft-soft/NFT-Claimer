@@ -1,7 +1,7 @@
 from loguru import logger
 
 from user_data.config import RETRY
-from utils import sleep
+from .utils import sleep
 
 
 def retry(func):
