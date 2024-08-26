@@ -59,10 +59,12 @@ if __name__ == "__main__":
     if sys.platform == 'win32':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     wallets = get_wallets()
-
     for account in wallets:
-        run_module(module, account.get("id"), account.get("key"))
-        if account != wallets[-1]:
-            random_time = random.randint(DELAY_FROM,DELAY_TO)
-            logger.info(f'Sleep: {random_time} s')
-            time.sleep(random_time)
+        try:
+            run_module(module, account.get("id"), account.get("key"))
+            if account != wallets[-1]:
+                random_time = random.randint(DELAY_FROM,DELAY_TO)
+                logger.info(f'Sleep: {random_time} s')
+                time.sleep(random_time)
+        except Exception as error:
+            logger.error(f'Error: {error}')
