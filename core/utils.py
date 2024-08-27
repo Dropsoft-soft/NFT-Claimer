@@ -37,18 +37,18 @@ def check_key(key):
     else:
         return str(key)
     
-with open(f"core/abi/erc_20.json", "r") as f:
-    ERC20_ABI = json.load(f, encoding="utf8")
+with open(f"core/abi/erc_20.json", "r", encoding="utf8") as f:
+    ERC20_ABI = json.load(f)
 
-with open(f"user_data/wallets.txt", "r") as f:
+with open(f"user_data/wallets.txt", "r", encoding="utf8") as f:
     WALLETS = [check_key(row.strip()) for row in f]
 
 
-with open(f"user_data/proxies.txt", "r") as f:
+with open(f"user_data/proxies.txt", "r", encoding="utf8") as f:
     PROXIES = [row.strip() for row in f]
 
-with open(f"core/all_badges.json", "r") as f:
-    BADGE_LIST = json.load(f, encoding="utf8")
+with open(f"core/all_badges.json", "r", encoding="utf8") as f:
+    BADGE_LIST = json.load(f)
 
 def get_wallet_proxies(wallets, proxies):
     try:
