@@ -5,7 +5,7 @@ from core.utils import WALLETS, sleeping
 from core.__init__ import *
 from concurrent.futures import ThreadPoolExecutor
 from loguru import logger
-from user_data.config import DELAY_FROM, DELAY_TO
+from user_data.config import DELAY_FROM, DELAY_TO, RANDOM_WALLETS
 from core.modules import *
 import questionary
 from questionary import Choice
@@ -16,6 +16,7 @@ logger.remove()
 logger.add(sys.stderr, format=format)
 
 def get_wallets():
+    if RANDOM_WALLETS == True: random.shuffle(WALLETS)
     wallets = [
         {
             "id": _id,

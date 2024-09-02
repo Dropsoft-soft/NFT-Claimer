@@ -6,7 +6,7 @@ USE_ENCRYPTED_WALLETS = False
 ENCRYPTED_PASSWORD = ""
 FEE_MULTIPLIER = 7.04
 MINT_RANDOM_SUMMER_BASE_NFT = False # If true will mint 1 random nfr instead of full list
-
+RANDOM_WALLETS = True
 # Scroll sessions refs to register with discount
 MINT_REFS_FOR_NICKNAME = [
     'NTAQN',
