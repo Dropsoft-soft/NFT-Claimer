@@ -13,7 +13,7 @@ def retry(func):
                 return result
             except Exception as e:
                 logger.error(f"Error | {e}")
-                sleep(10, 60)
+                await sleep(10, 30)
                 retries += 1
 
     return wrapper

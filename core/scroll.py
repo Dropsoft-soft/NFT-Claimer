@@ -71,35 +71,34 @@ class ScrollCanvas(WebClient):
             return False
     @retry  
     async def mintUserName(self):
-        try:
-            mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
-            nickname = str(random.choice(MINT_RANDOM_NICKNAME))
-            code, response = await self.getSignature()
-            bytes_for = response['signature']
-            base_fee = (await self.web3.eth.max_priority_fee)
-            contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
-                'nonce': await self.web3.eth.get_transaction_count(self.address),
-                'from': self.address,
-                'gas': 0,
-                'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
-                'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee),  
-                'chainId': self.chain_id,
-                'value': intToDecimal(0.0005, 18),
-            })
-            gas = await self.web3.eth.estimate_gas(contract_txn)
-            contract_txn['gas'] = int(gas*1.01)
+        mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
+        nickname = str(random.choice(MINT_RANDOM_NICKNAME))
+        code, response = await self.getSignature()
+        bytes_for = response['signature']
+        base_fee = (await self.web3.eth.max_priority_fee)
+        contract_txn = await mint_contract.functions.mint(nickname, bytes_for).build_transaction({
+            'nonce': await self.web3.eth.get_transaction_count(self.address),
+            'from': self.address,
+            'gas': 0,
+            'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
+            'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee),  
+            'chainId': self.chain_id,
+            'value': intToDecimal(0.0005, 18),
+        })
+        gas = await self.web3.eth.estimate_gas(contract_txn)
+        contract_txn['gas'] = int(gas*1.01)
 
-            status, tx_link = await self.send_tx(contract_txn)
-            if status == 1:
-                logger.success(f"[{self.id}] {self.address} | claimed nft nickname: {nickname} | {tx_link}")
-                await asyncio.sleep(5)
-                return True
-            else:
-                logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
-                return False
-        except Exception as error:
-            logger.error(error)
+        status, tx_link = await self.send_tx(contract_txn)
+        if status == 1:
+            logger.success(f"[{self.id}] {self.address} | claimed nft nickname: {nickname} | {tx_link}")
+            await asyncio.sleep(5)
+            return True
+        else:
+            logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
             return False
+        # except Exception as error:
+        #     logger.error(error)
+        #     return False
     @retry  
     async def mintFromJSON(self, json):
         try:

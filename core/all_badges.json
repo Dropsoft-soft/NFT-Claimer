@@ -17,7 +17,7 @@
             },
             "attesterProxy": "0x39fb5E85C7713657c2D9E869E974FF1e0B06F20C",
             "baseURL": "https://canvas.scroll.cat/badge",
-            "count": 522119
+            "count": 553080
         },
         {
             "name": "Scroll Origins NFT",
@@ -32,7 +32,7 @@
                 "origin": "https://scroll.io",
                 "communityURL": null
             },
-            "count": 207490
+            "count": 223611
         },
         {
             "name": "Scroll Reputation Attestation",
@@ -49,7 +49,7 @@
             },
             "attesterProxy": "0x65AB4b5f30AeF8B29858eA2cbD6b0d0E68010206",
             "baseURL": "https://mp.trustalabs.ai/attestations/media_badge",
-            "count": 95214
+            "count": 109810
         },
         {
             "name": "Ambient Swapooor",
@@ -66,7 +66,7 @@
             },
             "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
             "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
-            "count": 89776
+            "count": 95755
         },
         {
             "name": "ZNS Badge",
@@ -82,7 +82,7 @@
                 "communityURL": " https://discord.com/invite/skbA5Ucmmc"
             },
             "eligibilityCheck": true,
-            "count": 81202
+            "count": 88189
         },
         {
             "name": "Pencils SOUL Drops",
@@ -99,24 +99,7 @@
             },
             "attesterProxy": "0x546f7e7257963DcFC3A7885e911e47b76c05BB76",
             "baseURL": "https://pencilsprotocol.io/api/scroll/canvas/badge/pencil",
-            "count": 71465
-        },
-        {
-            "name": "Unrevealed",
-            "image": "https://ipfs.io/ipfs/QmY9rG94E1qpc5NPs1zFTM1hCCTmv9kiRvMoZjGyxCJ2ZE/0.png",
-            "description": "Unrevealed scrolly badge.",
-            "badgeContract": "0x79b4f7492328D0Cc4ED0Ddaee08Cd42f0F36A4CC",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Scrolly",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Scrolly.jpg",
-                "origin": "https://scrollyfi.xyz",
-                "communityURL": "https://t.me/ScrollyTheMap"
-            },
-            "attesterProxy": "0x47a49cCfa1924D5b59cb400708199b6Ae8543D31",
-            "baseURL": "https://api.scrollyfi.xyz/api/badge",
-            "count": 70841
+            "count": 86333
         },
         {
             "name": "OmniHub Badge",
@@ -133,7 +116,24 @@
             },
             "attesterProxy": "0x13babb8C705506Fd71f7e9Aff431B9aF2E659FE9",
             "baseURL": "https://api.omnihub.xyz/api/integration/scroll",
-            "count": 70218
+            "count": 85459
+        },
+        {
+            "name": "Unrevealed",
+            "image": "https://ipfs.io/ipfs/QmY9rG94E1qpc5NPs1zFTM1hCCTmv9kiRvMoZjGyxCJ2ZE/0.png",
+            "description": "Unrevealed scrolly badge.",
+            "badgeContract": "0x79b4f7492328D0Cc4ED0Ddaee08Cd42f0F36A4CC",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Scrolly",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Scrolly.jpg",
+                "origin": "https://scrollyfi.xyz",
+                "communityURL": "https://t.me/ScrollyTheMap"
+            },
+            "attesterProxy": "0x47a49cCfa1924D5b59cb400708199b6Ae8543D31",
+            "baseURL": "https://api.scrollyfi.xyz/api/badge",
+            "count": 74057
         },
         {
             "name": "Proof of Humanity Badge",
@@ -150,58 +150,7 @@
             },
             "attesterProxy": "0x9C8a1c5B993BaF52E9dD920181767b67bBd4d3A6",
             "baseURL": "https://mp.trustalabs.ai/attestations/poh_badge",
-            "count": 57889
-        },
-        {
-            "name": "Ambient Providoor",
-            "image": "https://ambient.finance/scroll-badge/2.png",
-            "description": "Providoor badge is for users who have made one or more single LP positions on Ambient Finance valued over $1000. (Art by @ShizzyAizawa)",
-            "badgeContract": "0xC634b718618729df70331D79fcd6E889a547fbEB",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Ambient Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Ambient Finance.png",
-                "origin": "https://ambient.finance/",
-                "communityURL": "https://discord.com/invite/ambient-finance"
-            },
-            "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
-            "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
-            "count": 46536
-        },
-        {
-            "name": "Unique Humanity Score",
-            "image": "https://raw.githubusercontent.com/gitcoinco/passport/93889216df77f83470b948f5c8b3f48c3b0492b4/app/public/scrollBadgeImages/60%2B.png",
-            "description": "This badge is for Scrollers who have a Passport score above 20, and have minted an onchain attestation to the Scroll network. Minting this badge informs everyone in the Scroll ecosystem that you're a real human!",
-            "badgeContract": "0xa623f348A12cFdC6B64a8c9e883dD9B243438E79",
-            "category": "Identities",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Passport XYZ",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Passport XYZ.jpg",
-                "origin": "https://passport.gitcoin.co/#/scroll",
-                "communityURL": "support@passport.xyz"
-            },
-            "attesterProxy": "0x39571bBD5a4c5d1a5184004c63F45FE426dB85Ea",
-            "baseURL": "https://passport-iam.gitcoin.co/scroll",
-            "count": 46379
-        },
-        {
-            "name": "Scroll Cross-chain Professional",
-            "image": "https://app.symbiosis.finance/scroll/badge.png",
-            "description": "This badge is designed for users who bridged a minimum of $100 through Symbiosis to Scroll",
-            "badgeContract": "0xB936740f00FFA90a55C362C33840913eaCFDcE25",
-            "category": "Identities",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Symbiosis",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
-                "origin": "https://symbiosis.finance/",
-                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
-            },
-            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
-            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
-            "count": 45500
+            "count": 68115
         },
         {
             "name": "XHS Holder",
@@ -218,7 +167,58 @@
             },
             "attesterProxy": "0xc2968d15a98406582a9fbc40c4508ce9cad4577e",
             "baseURL": "https://scroll-canvas-api.xname.app/api",
-            "count": 42557
+            "count": 52770
+        },
+        {
+            "name": "Scroll Cross-chain Professional",
+            "image": "https://app.symbiosis.finance/scroll/badge.png",
+            "description": "This badge is designed for users who bridged a minimum of $100 through Symbiosis to Scroll. Explore and mint all 14 badges in Symbiosis App: https://app.symbiosis.finance/scroll-badges",
+            "badgeContract": "0xB936740f00FFA90a55C362C33840913eaCFDcE25",
+            "category": "Identities",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Symbiosis",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
+                "origin": "https://symbiosis.finance/",
+                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
+            },
+            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
+            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
+            "count": 51081
+        },
+        {
+            "name": "Ambient Providoor",
+            "image": "https://ambient.finance/scroll-badge/2.png",
+            "description": "Providoor badge is for users who have made one or more single LP positions on Ambient Finance valued over $1000. (Art by @ShizzyAizawa)",
+            "badgeContract": "0xC634b718618729df70331D79fcd6E889a547fbEB",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Ambient Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Ambient Finance.png",
+                "origin": "https://ambient.finance/",
+                "communityURL": "https://discord.com/invite/ambient-finance"
+            },
+            "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
+            "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
+            "count": 50157
+        },
+        {
+            "name": "Unique Humanity Score",
+            "image": "https://raw.githubusercontent.com/gitcoinco/passport/93889216df77f83470b948f5c8b3f48c3b0492b4/app/public/scrollBadgeImages/60%2B.png",
+            "description": "This badge is for Scrollers who have a Passport score above 20, and have minted an onchain attestation to the Scroll network. Minting this badge informs everyone in the Scroll ecosystem that you're a real human!",
+            "badgeContract": "0xa623f348A12cFdC6B64a8c9e883dD9B243438E79",
+            "category": "Identities",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Passport XYZ",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Passport XYZ.jpg",
+                "origin": "https://passport.gitcoin.co/#/scroll",
+                "communityURL": "support@passport.xyz"
+            },
+            "attesterProxy": "0x39571bBD5a4c5d1a5184004c63F45FE426dB85Ea",
+            "baseURL": "https://passport-iam.gitcoin.co/scroll",
+            "count": 47892
         },
         {
             "name": "Entry Scroll Bridger Badge",
@@ -235,75 +235,7 @@
             },
             "attesterProxy": "0x850C116ea39b49d8714BE4d1dEffDC1009D66C48",
             "baseURL": "https://owlto.finance/nocore_api/v1/campaign/scroll-badge",
-            "count": 32930
-        },
-        {
-            "name": "Scrolling bridge 6",
-            "image": "https://app.symbiosis.finance/scroll/badge10.png",
-            "description": "This badge is designed for users who made cross-chain swap from zkSync to Scroll.",
-            "badgeContract": "0x9765B7B7926Cb27b84f5F48EA0758Fa99da3C7d6",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Symbiosis",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
-                "origin": "https://symbiosis.finance/",
-                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
-            },
-            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
-            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
-            "count": 31761
-        },
-        {
-            "name": "Symbiosis Pro Swapper",
-            "image": "https://app.symbiosis.finance/scroll/badge4.png",
-            "description": "This badge is designed for users who made a minimum of $100 on-chain swap on Scroll (E.g. wrsETH to weETH)",
-            "badgeContract": "0x0a584c042133aF17f3e522F09A77Ee1496f3a567",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Symbiosis",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
-                "origin": "https://symbiosis.finance/",
-                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
-            },
-            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
-            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
-            "count": 29237
-        },
-        {
-            "name": "Scrolling bridge 1",
-            "image": "https://app.symbiosis.finance/scroll/badge5.png",
-            "description": "This badge is designed for users who made cross-chain swap from Blast to Scroll.",
-            "badgeContract": "0xB69cF3247b60F72ba560B3C1e0F53DAF9e9D5201",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Symbiosis",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
-                "origin": "https://symbiosis.finance",
-                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
-            },
-            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
-            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
-            "count": 26380
-        },
-        {
-            "name": "Zebra",
-            "image": "https://app.zebra.xyz/images/badge.png",
-            "description": "Users who participate in Scroll Canvas and complete tasks will receive Zebra's 'zebra' badge. Users with this badge will enjoy Zebra's early benefits in the future.",
-            "badgeContract": "0x09E14E520eec3583681Fe225a4B506743EC3cc78",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Zebra",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Zebra.png",
-                "origin": "https://app.zebra.xyz/",
-                "communityURL": "https://discord.gg/Wzca8WxJKn"
-            },
-            "attesterProxy": "0x35BcDcd5813a08f890163c166826856B47e7977F",
-            "baseURL": "https://zebra.xyz/api/badge",
-            "count": 22982
+            "count": 41876
         },
         {
             "name": "NFTs2Me Creator Badge",
@@ -319,109 +251,58 @@
                 "communityURL": "https://discord.com/invite/Usmgxj2Msk"
             },
             "eligibilityCheck": true,
-            "count": 22814
+            "count": 37741
         },
         {
-            "name": "Smilecobra Genesis Badge",
-            "image": "https://static.smilecobra.io/attach/2024/08/66ac7306e778.png",
-            "description": "Users who complete quest on the SmileCobra platform and mint the SMC HONOUR NFT will receive the SmileCobra Genesis Badge. Holders of this badge will enjoy potential airdrop incentives across the entire platform in the future.",
-            "badgeContract": "0x7ecf596Ed5fE6957158cD626b6bE2A667267424f",
+            "name": "zkSync Bridger",
+            "image": "https://app.symbiosis.finance/scroll/badge10.png",
+            "description": "This badge is designed for users who made cross-chain swap from zkSync to Scroll. Explore more and mint all 14 badges in Symbiosis App: https://app.symbiosis.finance/scroll-badges",
+            "badgeContract": "0x9765B7B7926Cb27b84f5F48EA0758Fa99da3C7d6",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "SmileCobra Studio",
-                "logo": "https://scroll-eco-list.netlify.app/logos/SmileCobra Studio.jpg",
-                "origin": "https://www.smilecobra.io/smc",
-                "communityURL": "https://discord.gg/CWZFqUxuJD"
+                "name": "Symbiosis",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
+                "origin": "https://symbiosis.finance/",
+                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
             },
-            "attesterProxy": "0xA6447fA0508c6bEfb413a0adE5fCfe26C4998DeA",
-            "baseURL": "https://api.smilecobra.io/tripartite/scroll/badge",
-            "count": 22021
+            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
+            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
+            "count": 37185
         },
         {
-            "name": "Scroll Booster",
-            "image": "https://imagedelivery.net/Ebdw_AyMzN9_57Atf3-rVg/b511e8e2-1af8-493f-2f7a-abce26bdcc00/public",
-            "description": "This badge is for holders with .scroll names. Secure your .scroll identity at https://xname.app .",
-            "badgeContract": "0xed269A526ad793CcB671Ef55A7AF6E45F300d462",
+            "name": "Symbiosis Pro Swapper",
+            "image": "https://app.symbiosis.finance/scroll/badge4.png",
+            "description": "This badge is designed for users who made a minimum of $100 on-chain swap on Scroll (E.g. wrsETH to ETH). Explore all 14 badges in Symbiosis App: https://app.symbiosis.finance/scroll-badges",
+            "badgeContract": "0x0a584c042133aF17f3e522F09A77Ee1496f3a567",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "XSTAR",
-                "logo": "https://scroll-eco-list.netlify.app/logos/XSTAR.jpg",
-                "origin": "https://xstar.id/",
-                "communityURL": "https://discord.com/invite/8xUQyrAZ"
+                "name": "Symbiosis",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
+                "origin": "https://symbiosis.finance/",
+                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
             },
-            "attesterProxy": "0xA599bA9656CD5bb3C1D841c9866704BdEB724DFe",
-            "baseURL": "https://scroll-canvas-api.xname.app/api/domain",
-            "count": 18877
+            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
+            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
+            "count": 35126
         },
         {
-            "name": "Toaster Airdrop Badge",
-            "image": "https://www.toaster.finance/assets/scroll-badge/0.png",
-            "description": "Connect your X (Twitter) account on our website and follow @toasterfinance to receive this badge. You can link your Twitter account here: https://www.toaster.finance/butter. (Art by @yeju_jeong_)",
-            "badgeContract": "0xB0C3793C06C0398C8e285f1cea6e4b21e85514F9",
+            "name": "Blast Bridger",
+            "image": "https://app.symbiosis.finance/scroll/badge5.png",
+            "description": "This badge is designed for users who made cross-chain swap from Blast to Scroll. Explore and mint all 14 badges in Symbiosis App: https://app.symbiosis.finance/scroll-badges",
+            "badgeContract": "0xB69cF3247b60F72ba560B3C1e0F53DAF9e9D5201",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Toaster Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
-                "origin": "https://toaster.finance/",
-                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
+                "name": "Symbiosis",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Symbiosis.png",
+                "origin": "https://symbiosis.finance",
+                "communityURL": " https://discord.com/invite/YHgDSJ42eG"
             },
-            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
-            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
-            "count": 16947
-        },
-        {
-            "name": "Loyal Scroll Bridger Badge",
-            "image": "https://owlto.finance/icon/badge/silver.png",
-            "description": "Owltors who complete three bridges to Scroll Network via Owlto Finance can claim the Badge.",
-            "badgeContract": "0x2F942fbCd37693B2f4254fEe6e4cd70508e6235a",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Owlto Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Owlto Finance.png",
-                "origin": "https://owlto.finance/",
-                "communityURL": "https://discord.gg/owlto"
-            },
-            "attesterProxy": "0x850C116ea39b49d8714BE4d1dEffDC1009D66C48",
-            "baseURL": "https://owlto.finance/nocore_api/v1/campaign/scroll-badge",
-            "count": 16177
-        },
-        {
-            "name": "Ambient Filloor",
-            "image": "https://ambient.finance/scroll-badge/3.png",
-            "description": "Filloor badge is for users who have one or more filled limit orders on Ambient Finance valued over $500. (Art by @ShizzyAizawa)",
-            "badgeContract": "0x21C5E85eBCbd924BA633D4A7A5F2718f25C713D8",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Ambient Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Ambient Finance.png",
-                "origin": "https://ambient.finance/",
-                "communityURL": "https://discord.com/invite/ambient-finance"
-            },
-            "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
-            "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
-            "count": 15788
-        },
-        {
-            "name": "Pencil P Badge",
-            "image": "https://pencilsprotocol.io/nft/scroll/pencil/metadata-p-badge.png",
-            "description": "Pencils P Badge is rewarded to users who actively participated in Pencils Protocol multi-seasons campaign, with staking more than 0.1 ETH equivalent assets into Scroll ecosystem",
-            "badgeContract": "0x2d8E67c1427a1ebb9ddB5c4D38143140B0c19aC8",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Pencils Protocol",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Pencils Protocol.jpg",
-                "origin": "https://pencilsprotocol.io",
-                "communityURL": "https://t.me/pencilsprotocol/25133"
-            },
-            "attesterProxy": "0xe657243DF50dbC60383f9504bE22f7288174095c",
-            "baseURL": "https://pencilsprotocol.io/api/scroll/canvas/badge/pencil",
-            "count": 15746
+            "attesterProxy": "0x7673F45e6E95373BA22651A4f5f594EDEC3006BC",
+            "baseURL": "https://api.symbiosis.finance/crosschain/v1/scroll-badge",
+            "count": 28219
         },
         {
             "name": "SyncSwap Lucky Trader",
@@ -438,58 +319,58 @@
             },
             "attesterProxy": "0x3b7607203e7532884cB72Fe78aBB12b139d5e728",
             "baseURL": "https://api.syncswap.xyz/api/v2/scroll/badge",
-            "count": 15497
+            "count": 26970
         },
         {
-            "name": "Scroll RetroBridger",
-            "image": "https://ipfs.io/ipfs/QmQLj8S8guqjHuXPexGVgeEZC1QUp13VCQEtFjX6jty2dk/0.png",
-            "description": "RetroBridger Badge on Scroll L2 dedicated for everyone who bridged from 0.05 ETH or $150 worth of stables through RetroBridge to Scroll Network",
-            "badgeContract": "0x59700c6Ed282eD7611943129f226914ACBB3982b",
+            "name": "Toaster Airdrop Badge",
+            "image": "https://www.toaster.finance/assets/scroll-badge/0.png",
+            "description": "Connect your X (Twitter) account on our website and follow @toasterfinance to receive this badge. You can link your Twitter account here: https://www.toaster.finance/butter. (Art by @yeju_jeong_)",
+            "badgeContract": "0xB0C3793C06C0398C8e285f1cea6e4b21e85514F9",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Retro Bridge",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Retro Bridge.jpg",
-                "origin": "https://app.retrobridge.io",
-                "communityURL": "https://discord.gg/retrobridge"
+                "name": "Toaster Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
+                "origin": "https://toaster.finance/",
+                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
             },
-            "attesterProxy": "0xbE3B5EB273567D3D5CeAB69815CfD254Ee48FAF3",
-            "baseURL": "https://backend.retrobridge.io/api/quest",
-            "count": 14499
+            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
+            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
+            "count": 26109
         },
         {
-            "name": "Fanaticism Scroll Bridger Badge",
-            "image": "https://owlto.finance/icon/badge/gold.png",
-            "description": "Owltors who complete five bridges to Scroll Network via Owlto Finance can claim the Badge.",
-            "badgeContract": "0xB9CD7EC2A2261AEA5B0251cf2394e5345C95df61",
+            "name": "Smilecobra Genesis Badge",
+            "image": "https://static.smilecobra.io/attach/2024/08/66ac7306e778.png",
+            "description": "Users who complete quest on the SmileCobra platform and mint the SMC HONOUR NFT will receive the SmileCobra Genesis Badge. Holders of this badge will enjoy potential airdrop incentives across the entire platform in the future.",
+            "badgeContract": "0x7ecf596Ed5fE6957158cD626b6bE2A667267424f",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Owlto Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Owlto Finance.png",
-                "origin": "https://owlto.finance/",
-                "communityURL": "https://discord.gg/owlto"
+                "name": "SmileCobra Studio",
+                "logo": "https://scroll-eco-list.netlify.app/logos/SmileCobra Studio.jpg",
+                "origin": "https://www.smilecobra.io/smc",
+                "communityURL": "https://discord.gg/CWZFqUxuJD"
             },
-            "attesterProxy": "0x850C116ea39b49d8714BE4d1dEffDC1009D66C48",
-            "baseURL": "https://owlto.finance/nocore_api/v1/campaign/scroll-badge",
-            "count": 13545
+            "attesterProxy": "0xA6447fA0508c6bEfb413a0adE5fCfe26C4998DeA",
+            "baseURL": "https://api.smilecobra.io/tripartite/scroll/badge",
+            "count": 24777
         },
         {
-            "name": "Scroll Explorer",
-            "image": "https://xenobunny.s3.amazonaws.com/images/scroll-canvas/scroll-explorer-badge.png",
-            "description": "Own at least 1 piece of land on Scroll, either through purchase or adventure reward.",
-            "badgeContract": "0x7188B352C818f291432CDe8E4B1f0576c188F9e4",
+            "name": "Zebra",
+            "image": "https://app.zebra.xyz/images/badge.png",
+            "description": "Users who participate in Scroll Canvas and complete tasks will receive Zebra's 'zebra' badge. Users with this badge will enjoy Zebra's early benefits in the future.",
+            "badgeContract": "0x09E14E520eec3583681Fe225a4B506743EC3cc78",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "XenoBunny",
-                "logo": "https://scroll-eco-list.netlify.app/logos/XenoBunny.jpg",
-                "origin": "https://www.xenobunny.xyz/",
-                "communityURL": "https://discord.com/invite/m9hSRPFZ38"
+                "name": "Zebra",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Zebra.png",
+                "origin": "https://app.zebra.xyz/",
+                "communityURL": "https://discord.gg/Wzca8WxJKn"
             },
-            "attesterProxy": "0x2DCa57F08b8445BD6265b3667D5a420089255b92",
-            "baseURL": "https://publicapi.xenobunny.xyz/canvas/lands",
-            "count": 12624
+            "attesterProxy": "0x35BcDcd5813a08f890163c166826856B47e7977F",
+            "baseURL": "https://zebra.xyz/api/badge",
+            "count": 24765
         },
         {
             "name": "RubyScore ranking on Scroll",
@@ -506,7 +387,75 @@
             },
             "attesterProxy": "0x3d52d95D58fCb53814ea37d580601D2AF2B4CC98",
             "baseURL": "https://rubyscore.io/api/scroll-badge",
-            "count": 10209
+            "count": 23806
+        },
+        {
+            "name": "Scroll Booster",
+            "image": "https://imagedelivery.net/Ebdw_AyMzN9_57Atf3-rVg/b511e8e2-1af8-493f-2f7a-abce26bdcc00/public",
+            "description": "This badge is for holders with .scroll names. Secure your .scroll identity at https://xname.app .",
+            "badgeContract": "0xed269A526ad793CcB671Ef55A7AF6E45F300d462",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XSTAR",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XSTAR.jpg",
+                "origin": "https://xstar.id/",
+                "communityURL": "https://discord.com/invite/8xUQyrAZ"
+            },
+            "attesterProxy": "0xA599bA9656CD5bb3C1D841c9866704BdEB724DFe",
+            "baseURL": "https://scroll-canvas-api.xname.app/api/domain",
+            "count": 20963
+        },
+        {
+            "name": "Loyal Scroll Bridger Badge",
+            "image": "https://owlto.finance/icon/badge/silver.png",
+            "description": "Owltors who complete three bridges to Scroll Network via Owlto Finance can claim the Badge.",
+            "badgeContract": "0x2F942fbCd37693B2f4254fEe6e4cd70508e6235a",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Owlto Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Owlto Finance.png",
+                "origin": "https://owlto.finance/",
+                "communityURL": "https://discord.gg/owlto"
+            },
+            "attesterProxy": "0x850C116ea39b49d8714BE4d1dEffDC1009D66C48",
+            "baseURL": "https://owlto.finance/nocore_api/v1/campaign/scroll-badge",
+            "count": 18653
+        },
+        {
+            "name": "Pencil P Badge",
+            "image": "https://pencilsprotocol.io/nft/scroll/pencil/metadata-p-badge.png",
+            "description": "Pencils P Badge is rewarded to users who actively participated in Pencils Protocol multi-seasons campaign, with staking more than 0.1 ETH equivalent assets into Scroll ecosystem",
+            "badgeContract": "0x2d8E67c1427a1ebb9ddB5c4D38143140B0c19aC8",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Pencils Protocol",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Pencils Protocol.jpg",
+                "origin": "https://pencilsprotocol.io",
+                "communityURL": "https://t.me/pencilsprotocol/25133"
+            },
+            "attesterProxy": "0xe657243DF50dbC60383f9504bE22f7288174095c",
+            "baseURL": "https://pencilsprotocol.io/api/scroll/canvas/badge/pencil",
+            "count": 18162
+        },
+        {
+            "name": "Scroll RetroBridger",
+            "image": "https://ipfs.io/ipfs/QmQLj8S8guqjHuXPexGVgeEZC1QUp13VCQEtFjX6jty2dk/0.png",
+            "description": "RetroBridger Badge on Scroll L2 dedicated for everyone who bridged from 0.05 ETH or $150 worth of stables through RetroBridge to Scroll Network",
+            "badgeContract": "0x59700c6Ed282eD7611943129f226914ACBB3982b",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Retro Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Retro Bridge.jpg",
+                "origin": "https://app.retrobridge.io",
+                "communityURL": "https://discord.gg/retrobridge"
+            },
+            "attesterProxy": "0xbE3B5EB273567D3D5CeAB69815CfD254Ee48FAF3",
+            "baseURL": "https://backend.retrobridge.io/api/quest",
+            "count": 16755
         },
         {
             "name": "Hippo Badge",
@@ -523,40 +472,24 @@
             },
             "attesterProxy": "0x825fa355BB4FFb7e385c8c4f556f1aDf9897211C",
             "baseURL": "https://api.hipposwap.finance/api/badge/middle",
-            "count": 9961
+            "count": 16737
         },
         {
-            "name": "Nuri Locker Badge (10)",
-            "image": "https://raw.githubusercontent.com/RamsesExchange/nuri-canvas-contracts/master/images/nuri-locker-standard-badge.png",
-            "description": "This badge represents ownership of a veNURI lock with at least 10 NURI and a locktime above 3 years",
-            "badgeContract": "0x7E7946A39cAAA00c129D7A61c562a1fBb7974718",
+            "name": "Ambient Filloor",
+            "image": "https://ambient.finance/scroll-badge/3.png",
+            "description": "Filloor badge is for users who have one or more filled limit orders on Ambient Finance valued over $500. (Art by @ShizzyAizawa)",
+            "badgeContract": "0x21C5E85eBCbd924BA633D4A7A5F2718f25C713D8",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Nuri Exchange",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Nuri Exchange.png",
-                "origin": "https://nuri.exchange",
-                "communityURL": "https://discord.gg/n9wgqpVwsn"
+                "name": "Ambient Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Ambient Finance.png",
+                "origin": "https://ambient.finance/",
+                "communityURL": "https://discord.com/invite/ambient-finance"
             },
-            "eligibilityCheck": true,
-            "count": 8129
-        },
-        {
-            "name": "Scroller Agent Badge",
-            "image": "https://kioskmeta.s3.ap-southeast-1.amazonaws.com/scroller-badge-bridged.png",
-            "description": "Earn this badge by bridging with your Scroller NFT from ETH Mainnet to Scroll.",
-            "badgeContract": "0x9aD600bDD45Cc30242fd905872962dc415F68530",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Scroller NFT",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Scroller NFT.jpg",
-                "origin": "https://www.scrollernft.xyz",
-                "communityURL": "https://t.me/boost?c=2249059743"
-            },
-            "baseURL": "https://vwb06c8e7h.execute-api.us-east-1.amazonaws.com/dev",
-            "airdrop": true,
-            "count": 7541
+            "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
+            "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
+            "count": 16484
         },
         {
             "name": "Eisen Beginner",
@@ -573,23 +506,41 @@
             },
             "attesterProxy": "0xB3fAf6dB995a063d020c3e4FcfBfdAa3F4e3e54e",
             "baseURL": "https://scroll-badge.gke-01.eisenfinance.com/eisen-scroll-badge",
-            "count": 6899
+            "count": 16153
         },
         {
-            "name": "NFTs2Me Supporter Badge",
-            "image": "https://ipfs.io/ipfs/QmVvXJHhZjo9E2cmYW4Et1WNa7aaMjsCHf81j5hETr98dX",
-            "description": "This badge is awarded as owner of NFTs2Me Supporter Pins. Mint yours at https://nfts2me.com/scroll-badges/",
-            "badgeContract": "0x8b198380dB46DCD972c30c67dD24FAcF1Dcdb163",
+            "name": "Fanaticism Scroll Bridger Badge",
+            "image": "https://owlto.finance/icon/badge/gold.png",
+            "description": "Owltors who complete five bridges to Scroll Network via Owlto Finance can claim the Badge.",
+            "badgeContract": "0xB9CD7EC2A2261AEA5B0251cf2394e5345C95df61",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "NFTs2Me",
-                "logo": "https://scroll-eco-list.netlify.app/logos/NFTs2Me.png",
-                "origin": "https://nfts2me.com/scroll-badges/",
-                "communityURL": "https://discord.com/invite/Usmgxj2Msk"
+                "name": "Owlto Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Owlto Finance.png",
+                "origin": "https://owlto.finance/",
+                "communityURL": "https://discord.gg/owlto"
             },
-            "eligibilityCheck": true,
-            "count": 6830
+            "attesterProxy": "0x850C116ea39b49d8714BE4d1dEffDC1009D66C48",
+            "baseURL": "https://owlto.finance/nocore_api/v1/campaign/scroll-badge",
+            "count": 15432
+        },
+        {
+            "name": "Scroll Explorer",
+            "image": "https://xenobunny.s3.amazonaws.com/images/scroll-canvas/scroll-explorer-badge.png",
+            "description": "Own at least 1 piece of land on Scroll, either through purchase or adventure reward.",
+            "badgeContract": "0x7188B352C818f291432CDe8E4B1f0576c188F9e4",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XenoBunny",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XenoBunny.jpg",
+                "origin": "https://www.xenobunny.xyz/",
+                "communityURL": "https://discord.com/invite/m9hSRPFZ38"
+            },
+            "attesterProxy": "0x2DCa57F08b8445BD6265b3667D5a420089255b92",
+            "baseURL": "https://publicapi.xenobunny.xyz/canvas/lands",
+            "count": 15383
         },
         {
             "name": "OmniHub Guardian Badge",
@@ -606,74 +557,7 @@
             },
             "attesterProxy": "0x8499a8bd1051eD3011CB79295d7286d5c9Fe8aF9",
             "baseURL": "https://api.omnihub.xyz/api/integration/v2/scroll",
-            "count": 6740
-        },
-        {
-            "name": "Conft 2024 Badge",
-            "image": "https://ipfs.io/ipfs/QmeoqEhVD2EygXpM4HTCFBgnRD9cNi5R5uUCFUooNNuYW1",
-            "description": "Conft 2024 Badge is for users with a unique ‘.s’ domain name registered on Scroll via Conft’s Name Service. Users with this badge secure eligibility for future rewards from Conft.",
-            "badgeContract": "0x218e736Cc77c1339e42Ac6829ae93AC3CEA65b7a",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "coNFT",
-                "logo": "https://scroll-eco-list.netlify.app/logos/coNFT.jpg",
-                "origin": "https://conft.app/",
-                "communityURL": "https://x.com/ConftApp"
-            },
-            "eligibilityCheck": true,
-            "count": 6680
-        },
-        {
-            "name": "Smilecobra Genleap badge",
-            "image": "https://static.smilecobra.io/attach/2024/08/66b3197c7536.png",
-            "description": "Genleap is the first AAA MMORPG game developed by Smilecobra Studio. Users who complete tasks on Smilecobra and mint SMC HALO NFT will receive the Smilecobra Genleap badge. Holders of this badge will be eligible for potential airdrop rewards from the SMC",
-            "badgeContract": "0x980f717C3D76faAfEe3382424F83C5e11f045029",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "SmileCobra Studio",
-                "logo": "https://scroll-eco-list.netlify.app/logos/SmileCobra Studio.jpg",
-                "origin": "https://www.smilecobra.io/puzzle",
-                "communityURL": "https://www.smilecobra.io/puzzle"
-            },
-            "attesterProxy": "0xA6447fA0508c6bEfb413a0adE5fCfe26C4998DeA",
-            "baseURL": "https://api.smilecobra.io/tripartite/scroll/badge",
-            "count": 5944
-        },
-        {
-            "name": "Toaster GM Badge",
-            "image": "https://www.toaster.finance/assets/scroll-badge/1.png",
-            "description": "GM from Toaster! Users who deposit or swap on Scroll more than $300 will receive this badge.",
-            "badgeContract": "0xFb070831e0Acf47c90C3c91fdF11b0c99FaD1e17",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Toaster Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
-                "origin": "https://toaster.finance/",
-                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
-            },
-            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
-            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
-            "count": 5571
-        },
-        {
-            "name": "Pencil S Badge",
-            "image": "https://pencilsprotocol.io/nft/scroll/pencil/metadata-s-badge.png",
-            "description": "Pencils S Badge is rewarded to users who actively participated in Pencils Protocol multi-seasons campaign, with staking more than 0.5 ETH equivalent assets into Scroll ecosystem",
-            "badgeContract": "0x766e3f1EE86439DE0597F6e917F980A4e5d187A3",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Pencils Protocol",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Pencils Protocol.jpg",
-                "origin": "https://pencilsprotocol.io",
-                "communityURL": "https://t.me/pencilsprotocol/25133"
-            },
-            "attesterProxy": "0x43B643299110F99536aBE0ACA64c98BeD7360286",
-            "baseURL": "https://pencilsprotocol.io/api/scroll/canvas/badge/pencil",
-            "count": 4832
+            "count": 12569
         },
         {
             "name": "MiniBridge Beginner",
@@ -690,73 +574,123 @@
             },
             "attesterProxy": "0x6a2b88275dE6BFF1992fb25371DfC0073349B22b",
             "baseURL": "https://op.chaineye.tools/minibridge/scroll",
-            "count": 4727
+            "count": 11990
         },
         {
-            "name": "Human Squad with DMAIL",
-            "image": "https://imagedelivery.net/Ebdw_AyMzN9_57Atf3-rVg/b01eaaa9-ac3b-404c-eb90-bd3e45072300/public",
-            "description": "This badge celebrates the collaboration with DMAIL on the Scroll network. To qualify, you need to complete two tasks: 1. Hold a .scroll name at https://scroll.xname.app ; 2. Send an email on the Scroll network using https://mail.dmail.ai/compose .",
-            "badgeContract": "0x15B0BCbdfc9Ca5990EE725076f1Dfc360a73476c",
-            "category": "Identities",
-            "thirdParty": true,
-            "issuer": {
-                "name": "XSTAR",
-                "logo": "https://scroll-eco-list.netlify.app/logos/XSTAR.jpg",
-                "origin": "https://xstar.id/",
-                "communityURL": "https://discord.com/invite/KqR8Tr57Kw"
-            },
-            "attesterProxy": "0x93c5d8769800c6EE2C834eE8b2910F82eA0276c7",
-            "baseURL": "https://scroll-canvas-api.xname.app/collab-dmail/api",
-            "count": 4171
-        },
-        {
-            "name": "SyncSwap Stargazer",
-            "image": "https://syncswap.xyz/images/scroll-badge/2.png",
-            "description": "This badge is rewarded to early SyncSwap users on Scroll who have one or more liquidity position over $1000.",
-            "badgeContract": "0x02be97d5D39a5cE9D0a8bee1fCf02927cf44C1C5",
+            "name": "NFTs2Me Supporter Badge",
+            "image": "https://ipfs.io/ipfs/QmVvXJHhZjo9E2cmYW4Et1WNa7aaMjsCHf81j5hETr98dX",
+            "description": "This badge is awarded as owner of NFTs2Me Supporter Pins. Mint yours at https://nfts2me.com/scroll-badges/",
+            "badgeContract": "0x8b198380dB46DCD972c30c67dD24FAcF1Dcdb163",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Syncswap",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Syncswap.png",
-                "origin": "https://syncswap.xyz",
-                "communityURL": "https://discord.gg/syncswap"
+                "name": "NFTs2Me",
+                "logo": "https://scroll-eco-list.netlify.app/logos/NFTs2Me.png",
+                "origin": "https://nfts2me.com/scroll-badges/",
+                "communityURL": "https://discord.com/invite/Usmgxj2Msk"
             },
-            "attesterProxy": "0x3b7607203e7532884cB72Fe78aBB12b139d5e728",
-            "baseURL": "https://api.syncswap.xyz/api/v2/scroll/badge",
-            "count": 4015
+            "eligibilityCheck": true,
+            "count": 10200
         },
         {
-            "name": "Scroll on Highlight Commemorative Mint Badge",
-            "image": "https://arweave.net/tZryebA-Z6zj8oT17NcBxKI95KYxQfsmAHsSFheI0Mo",
-            "description": "This badge is for Scroll collectors who mint the Scroll on Highlight commemorative mint. Different tiers are awarded based on how many iterations are minted in each mint transaction.",
-            "badgeContract": "0x20475183625aE0eD5Dcd2553a660B06FF52af8Bd",
+            "name": "Nuri Locker Badge (10)",
+            "image": "https://raw.githubusercontent.com/RamsesExchange/nuri-canvas-contracts/master/images/nuri-locker-standard-badge.png",
+            "description": "This badge represents ownership of a veNURI lock with at least 10 NURI and a locktime above 3 years",
+            "badgeContract": "0x7E7946A39cAAA00c129D7A61c562a1fBb7974718",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Highlight",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Highlight.png",
-                "origin": "https://highlight.xyz/",
-                "communityURL": "https://discord.gg/pnQWsgs2"
+                "name": "Nuri Exchange",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Nuri Exchange.png",
+                "origin": "https://nuri.exchange",
+                "communityURL": "https://discord.gg/n9wgqpVwsn"
             },
-            "eligibilityCheck": false,
-            "count": 3974
+            "eligibilityCheck": true,
+            "count": 10080
         },
         {
-            "name": "Conft Scroll Box",
-            "image": "https://ipfs.io/ipfs/QmeFviPDjDwfQgcNWH4xMBL6cFf9sgf45upJw6kghN6Wof",
-            "description": "Conft Scroll Box Badge is for the users that minted special “Cosmic Surprise” collection on Scroll. Users with this badge secure eligibility for future rewards from Conft.",
-            "badgeContract": "0x450Efa43661F5D669c35Ed62e18Bed4D6E826508",
+            "name": "Toaster GM Badge",
+            "image": "https://www.toaster.finance/assets/scroll-badge/1.png",
+            "description": "GM from Toaster! Users who deposit or swap on Scroll more than $300 will receive this badge.",
+            "badgeContract": "0xFb070831e0Acf47c90C3c91fdF11b0c99FaD1e17",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Toaster Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
+                "origin": "https://toaster.finance/",
+                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
+            },
+            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
+            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
+            "count": 9130
+        },
+        {
+            "name": "iZiSwap Swapper Badge",
+            "image": "https://izumi-finance.oss-ap-southeast-1.aliyuncs.com/assets/badge_swapper.png",
+            "description": "The iZiSwap Swapper Badge is a specially designed NFT program that recognizes iZiSwap traders on Scroll who have achieved a trading volume of over 50 USD.",
+            "badgeContract": "0x52Bb483718aE10d3e8e5af366FD800D9389b4822",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "iZUMi Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/iZUMi Finance.png",
+                "origin": "https://izumi.finance/trade/swap",
+                "communityURL": "https://discord.gg/izumifinance"
+            },
+            "attesterProxy": "0x32c2d3211A674126eFB382c08149006f58CF52FB",
+            "baseURL": "https://subapi.izumi.finance/api",
+            "count": 9026
+        },
+        {
+            "name": "Smilecobra Genleap badge",
+            "image": "https://static.smilecobra.io/attach/2024/08/66b3197c7536.png",
+            "description": "Genleap is the first AAA MMORPG game developed by Smilecobra Studio. Users who complete tasks on Smilecobra and mint SMC HALO NFT will receive the Smilecobra Genleap badge. Holders of this badge will be eligible for potential airdrop rewards from the SMC",
+            "badgeContract": "0x980f717C3D76faAfEe3382424F83C5e11f045029",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "SmileCobra Studio",
+                "logo": "https://scroll-eco-list.netlify.app/logos/SmileCobra Studio.jpg",
+                "origin": "https://www.smilecobra.io/puzzle",
+                "communityURL": "https://www.smilecobra.io/puzzle"
+            },
+            "attesterProxy": "0xA6447fA0508c6bEfb413a0adE5fCfe26C4998DeA",
+            "baseURL": "https://api.smilecobra.io/tripartite/scroll/badge",
+            "count": 8429
+        },
+        {
+            "name": "Conft 2024 Badge",
+            "image": "https://ipfs.io/ipfs/QmeoqEhVD2EygXpM4HTCFBgnRD9cNi5R5uUCFUooNNuYW1",
+            "description": "Conft 2024 Badge is for users with a unique ‘.s’ domain name registered on Scroll via Conft’s Name Service. Users with this badge secure eligibility for future rewards from Conft.",
+            "badgeContract": "0x218e736Cc77c1339e42Ac6829ae93AC3CEA65b7a",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
                 "name": "coNFT",
                 "logo": "https://scroll-eco-list.netlify.app/logos/coNFT.jpg",
-                "origin": "https://conft.app/scroll/collections/0xcf7f37b4916ac5c530c863f8c8bb26ec1e8d2ccb/nft",
+                "origin": "https://conft.app/",
                 "communityURL": "https://x.com/ConftApp"
             },
             "eligibilityCheck": true,
-            "count": 3464
+            "count": 7653
+        },
+        {
+            "name": "Scroller Agent Badge",
+            "image": "https://kioskmeta.s3.ap-southeast-1.amazonaws.com/scroller-badge-bridged.png",
+            "description": "Earn this badge by bridging with your Scroller NFT from ETH Mainnet to Scroll.",
+            "badgeContract": "0x9aD600bDD45Cc30242fd905872962dc415F68530",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Scroller NFT",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Scroller NFT.jpg",
+                "origin": "https://www.scrollernft.xyz",
+                "communityURL": "https://t.me/boost?c=2249059743"
+            },
+            "baseURL": "https://vwb06c8e7h.execute-api.us-east-1.amazonaws.com/dev",
+            "airdrop": true,
+            "count": 7598
         },
         {
             "name": "Eisen Explorer",
@@ -773,7 +707,108 @@
             },
             "attesterProxy": "0xB3fAf6dB995a063d020c3e4FcfBfdAa3F4e3e54e",
             "baseURL": "https://scroll-badge.gke-01.eisenfinance.com/eisen-scroll-badge",
-            "count": 3164
+            "count": 7326
+        },
+        {
+            "name": "MemeBridge Bridger",
+            "image": "https://image.memebridge.app/img/scrollbadge.png",
+            "description": "Earn this badge for complete one bridge to Scroll Network via MemeBridge.",
+            "badgeContract": "0x8A789703Cb69A521232E884812ed4623A7a7382B",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Meme Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Meme Bridge.png",
+                "origin": "https://memebridge.xyz/#/bridge/?original=Arbitrum&target=Scroll&symbol=ETH",
+                "communityURL": "https://discord.com/invite/UFFmGzryMX"
+            },
+            "attesterProxy": "0x7de3c253b3f28e78Fa82273527b6dA1f0b20C7DF",
+            "baseURL": "https://work.memebridge.app/api/v1/badge",
+            "count": 7178
+        },
+        {
+            "name": "SyncSwap Stargazer",
+            "image": "https://syncswap.xyz/images/scroll-badge/2.png",
+            "description": "This badge is rewarded to early SyncSwap users on Scroll who have one or more liquidity position over $1000.",
+            "badgeContract": "0x02be97d5D39a5cE9D0a8bee1fCf02927cf44C1C5",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Syncswap",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Syncswap.png",
+                "origin": "https://syncswap.xyz",
+                "communityURL": "https://discord.gg/syncswap"
+            },
+            "attesterProxy": "0x3b7607203e7532884cB72Fe78aBB12b139d5e728",
+            "baseURL": "https://api.syncswap.xyz/api/v2/scroll/badge",
+            "count": 7066
+        },
+        {
+            "name": "Human Squad with DMAIL",
+            "image": "https://imagedelivery.net/Ebdw_AyMzN9_57Atf3-rVg/b01eaaa9-ac3b-404c-eb90-bd3e45072300/public",
+            "description": "This badge celebrates the collaboration with DMAIL on the Scroll network. To qualify, you need to complete two tasks: 1. Hold a .scroll name at https://scroll.xname.app ; 2. Send an email on the Scroll network using https://mail.dmail.ai/compose .",
+            "badgeContract": "0x15B0BCbdfc9Ca5990EE725076f1Dfc360a73476c",
+            "category": "Identities",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XSTAR",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XSTAR.jpg",
+                "origin": "https://xstar.id/",
+                "communityURL": "https://discord.com/invite/KqR8Tr57Kw"
+            },
+            "attesterProxy": "0x93c5d8769800c6EE2C834eE8b2910F82eA0276c7",
+            "baseURL": "https://scroll-canvas-api.xname.app/collab-dmail/api",
+            "count": 6649
+        },
+        {
+            "name": "Conft Scroll Box",
+            "image": "https://ipfs.io/ipfs/QmeFviPDjDwfQgcNWH4xMBL6cFf9sgf45upJw6kghN6Wof",
+            "description": "Conft Scroll Box Badge is for the users that minted special “Cosmic Surprise” collection on Scroll. Users with this badge secure eligibility for future rewards from Conft.",
+            "badgeContract": "0x450Efa43661F5D669c35Ed62e18Bed4D6E826508",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "coNFT",
+                "logo": "https://scroll-eco-list.netlify.app/logos/coNFT.jpg",
+                "origin": "https://conft.app/scroll/collections/0xcf7f37b4916ac5c530c863f8c8bb26ec1e8d2ccb/nft",
+                "communityURL": "https://x.com/ConftApp"
+            },
+            "eligibilityCheck": true,
+            "count": 6237
+        },
+        {
+            "name": "Pencil S Badge",
+            "image": "https://pencilsprotocol.io/nft/scroll/pencil/metadata-s-badge.png",
+            "description": "Pencils S Badge is rewarded to users who actively participated in Pencils Protocol multi-seasons campaign, with staking more than 0.5 ETH equivalent assets into Scroll ecosystem",
+            "badgeContract": "0x766e3f1EE86439DE0597F6e917F980A4e5d187A3",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Pencils Protocol",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Pencils Protocol.jpg",
+                "origin": "https://pencilsprotocol.io",
+                "communityURL": "https://t.me/pencilsprotocol/25133"
+            },
+            "attesterProxy": "0x43B643299110F99536aBE0ACA64c98BeD7360286",
+            "baseURL": "https://pencilsprotocol.io/api/scroll/canvas/badge/pencil",
+            "count": 5465
+        },
+        {
+            "name": "XY Bridge Badge",
+            "image": "https://storage.googleapis.com/scroll-canvas-badge/Scroll%20Canvas%20NFT_Cross%20Chain%20Swap.png",
+            "description": "Earn this badge by Bridging at least 25 USD Value to Scroll",
+            "badgeContract": "0x0c5D859D4Bb0963C8F946d3B3751E4976165b38e",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XY Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XY Finance.png",
+                "origin": "https://xy.finance/",
+                "communityURL": "https://discord.com/channels/874214080272007200/1249251261925031956"
+            },
+            "attesterProxy": "0x0b4D5229bb5201e277D3937cE1704227C96bbc5F",
+            "baseURL": "https://api.xy.finance/campaign/canvasBridgeTask",
+            "count": 5110
         },
         {
             "name": "Explorer Certificate",
@@ -790,39 +825,41 @@
             },
             "attesterProxy": "0x764Af55daf1cBC7049FAef8e6BC3F626534a7D74",
             "baseURL": "https://publicapi.xenobunny.xyz/canvas/certificate",
-            "count": 3055
+            "count": 4277
         },
         {
-            "name": "Scroll Domain Master Badge 🎖️",
-            "image": "https://assets.znsconnect.io/domain-master-badge.png",
-            "description": "Achieve the Scroll Domain Master Badge by minting 5 domains on Scroll. This prestigious badge marks you as a master in the domain space! Mint your domains now: https://zns.bio/",
-            "badgeContract": "0x55B867a955e4384bcAc03eF7F2E492F68016C152",
+            "name": "Interport Cross-Chain Swapper",
+            "image": "https://api.interport.fi/static/scroll/swap-badge.png",
+            "description": "This badge is awarded for completing a cross-chain swap from any supported chain to Scroll, recognizing your voyage through Interport’s galaxy.",
+            "badgeContract": "0x046c88e95574db3a1924a89943347c1d39517f2b",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "ZNS Connect",
-                "logo": "https://scroll-eco-list.netlify.app/logos/ZNS Connect.jpg",
-                "origin": "https://www.znsconnect.io/",
-                "communityURL": " https://discord.com/invite/skbA5Ucmmc"
+                "name": "Interport Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Interport Finance.png",
+                "origin": "https://interport.fi",
+                "communityURL": "https://discord.gg/interport"
             },
-            "eligibilityCheck": true,
-            "count": 2559
+            "attesterProxy": "0x9Eb3d47aD536c2C430a1eF05cAC046B7E989a849",
+            "baseURL": "https://api.interport.fi/companies/scroll",
+            "count": 3491
         },
         {
-            "name": "Venister Badge",
-            "image": "https://azure-advisory-dove-95.mypinata.cloud/ipfs/QmQUkBRav4QpY9mqJziVouQvQvCoUBwk92HtSqnxuPuMy8",
-            "description": "Own aa champion in the Venverse.",
-            "badgeContract": "0x8483Ae3b737173b9f56d91D64999479274216ffF",
-            "category": "Identities",
+            "name": "iZiSwap Liquidity Provider Badge",
+            "image": "https://izumi-finance.oss-ap-southeast-1.aliyuncs.com/assets/badge_lp.png",
+            "description": "The iZiSwap Liquidity Provider Badge is a specially designed NFT program that recognizes users who provide liquidity on Scroll with a total liquidity value of over 50 USD.",
+            "badgeContract": "0x364415Ed1D1ddAfA72d2c09634C108625129389b",
+            "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Venium",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Venium.png",
-                "origin": "https://www.venverse.venium.io/badges",
-                "communityURL": "https://discord.gg/venium"
+                "name": "iZUMi Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/iZUMi Finance.png",
+                "origin": "https://izumi.finance/trade/add-liquidity",
+                "communityURL": "https://discord.gg/izumifinance"
             },
-            "eligibilityCheck": true,
-            "count": 2383
+            "attesterProxy": "0x1fe3174558B010329013C8ecB5f4d3A57826eB4f",
+            "baseURL": "https://subapi.izumi.finance/api",
+            "count": 3088
         },
         {
             "name": "Landing on Scroll",
@@ -839,24 +876,74 @@
             },
             "attesterProxy": "0xcF136b24EAfd35623d257FE9CF872799bBfec299",
             "baseURL": "https://publicapi.xenobunny.xyz/canvas/landing",
-            "count": 2024
+            "count": 3087
         },
         {
-            "name": "OmniHub Gold Badge",
-            "image": "https://omnihub.nyc3.digitaloceanspaces.com/scroll/badge_gold.png",
-            "description": "This badge is awarded to users who have created five NFT collections through OmniHub on the Scroll network.",
-            "badgeContract": "0x553aF61373B694B7d28CbcF76cF61BE53f323Cc1",
+            "name": "XY Liquidity Badge",
+            "image": "https://storage.googleapis.com/scroll-canvas-badge/Scroll%20Canvas%20NFT_Deposit.png",
+            "description": "Earn this badge by providing at least 100 USD Value on Scroll",
+            "badgeContract": "0xcE928Fa11001D56B0e8C107aFBa5acB7a117dAb5",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "OmniHub",
-                "logo": "https://scroll-eco-list.netlify.app/logos/OmniHub.jpg",
-                "origin": "https://omnihub.xyz",
-                "communityURL": "https://discord.gg/w5ShHyTvhy"
+                "name": "XY Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XY Finance.png",
+                "origin": "https://xy.finance/",
+                "communityURL": "https://discord.com/channels/874214080272007200/1249251261925031956"
             },
-            "attesterProxy": "0x94a4eFD397a035fFD6174445C9d5Ff3AcF9301e9",
-            "baseURL": "https://api.omnihub.xyz/api/integration/v2/scroll",
-            "count": 1511
+            "attesterProxy": "0x0b4D5229bb5201e277D3937cE1704227C96bbc5F",
+            "baseURL": "https://api.xy.finance/campaign/canvasLiquidityTask",
+            "count": 2902
+        },
+        {
+            "name": "Scroll Domain Master Badge 🎖️",
+            "image": "https://assets.znsconnect.io/domain-master-badge.png",
+            "description": "Achieve the Scroll Domain Master Badge by minting 5 domains on Scroll. This prestigious badge marks you as a master in the domain space! Mint your domains now: https://zns.bio/",
+            "badgeContract": "0x55B867a955e4384bcAc03eF7F2E492F68016C152",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "ZNS Connect",
+                "logo": "https://scroll-eco-list.netlify.app/logos/ZNS Connect.jpg",
+                "origin": "https://www.znsconnect.io/",
+                "communityURL": " https://discord.com/invite/skbA5Ucmmc"
+            },
+            "eligibilityCheck": true,
+            "count": 2834
+        },
+        {
+            "name": "MemeBridge Bridger Premium",
+            "image": "https://image.memebridge.app/img/scrollbadge1.png",
+            "description": "Earn this badge for complete three bridge to Scroll Network via MemeBridge.",
+            "badgeContract": "0xEbF2f9A467CA6618AcA2CdF797Ffd5720C87fb70",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Meme Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Meme Bridge.png",
+                "origin": "https://memebridge.xyz/#/bridge/?original=Arbitrum&target=Scroll&symbol=ETH",
+                "communityURL": "https://discord.com/invite/UFFmGzryMX"
+            },
+            "attesterProxy": "0x7de3c253b3f28e78Fa82273527b6dA1f0b20C7DF",
+            "baseURL": "https://work.memebridge.app/api/v1/badge",
+            "count": 2829
+        },
+        {
+            "name": "Scroll Galaxy Rover",
+            "image": "https://dweb.link/ipfs/QmYgRsxcNsTrhAjZv94ZvG3HYSzX9q6Ju53tSoDwMMGfmm",
+            "description": "This badge is designed for users who bridged a minimum of $10 to Scroll",
+            "badgeContract": "0xeaF618eE877DF14ae2c65d09ea41A52ecEe506BA",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Galaxy Exchange",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Galaxy Exchange.jpg",
+                "origin": "https://galaxy.exchange",
+                "communityURL": "https://discord.com/invite/swingxyz"
+            },
+            "attesterProxy": "0x6C72FC3Be251A32F021d2f2ab40cF306dCD86251",
+            "baseURL": "https://swap.prod.swing.xyz/v0/integrations/badge/verification",
+            "count": 2827
         },
         {
             "name": "Swapping Sorcerer",
@@ -873,41 +960,40 @@
             },
             "attesterProxy": "0x1579792112777Ee1887ea2F13c27331A0a0AC576",
             "baseURL": "https://api.scribe.exchange/api/v1/canvas/swap-sorcerer",
-            "count": 1307
+            "count": 2791
         },
         {
-            "name": "Hippo Realm Holder",
-            "image": "https://storage.googleapis.com/hipposwap-interface-website/images/hippo/badge_hippo_realm.png",
-            "description": "This badge is designed for users holding Hippo Realm NFTs on Scroll.",
-            "badgeContract": "0x5C99a6298BBdA89FCF4398FDDd1997e455c6f155",
+            "name": "Venister Badge",
+            "image": "https://azure-advisory-dove-95.mypinata.cloud/ipfs/QmQUkBRav4QpY9mqJziVouQvQvCoUBwk92HtSqnxuPuMy8",
+            "description": "Own aa champion in the Venverse.",
+            "badgeContract": "0x8483Ae3b737173b9f56d91D64999479274216ffF",
+            "category": "Identities",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Venium",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Venium.png",
+                "origin": "https://www.venverse.venium.io/badges",
+                "communityURL": "https://discord.gg/venium"
+            },
+            "eligibilityCheck": true,
+            "count": 2720
+        },
+        {
+            "name": "OmniHub Gold Badge",
+            "image": "https://omnihub.nyc3.digitaloceanspaces.com/scroll/badge_gold.png",
+            "description": "This badge is awarded to users who have created five NFT collections through OmniHub on the Scroll network.",
+            "badgeContract": "0x553aF61373B694B7d28CbcF76cF61BE53f323Cc1",
             "category": "Achievements",
             "thirdParty": true,
             "issuer": {
-                "name": "Hippo Swap",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Hippo Swap.png",
-                "origin": "https://hipposwap.finance/",
-                "communityURL": "https://link3.to/hipposwap"
+                "name": "OmniHub",
+                "logo": "https://scroll-eco-list.netlify.app/logos/OmniHub.jpg",
+                "origin": "https://omnihub.xyz",
+                "communityURL": "https://discord.gg/w5ShHyTvhy"
             },
-            "attesterProxy": "0x825fa355BB4FFb7e385c8c4f556f1aDf9897211C",
-            "baseURL": "https://api.hipposwap.finance/api/badge/holder",
-            "count": 1187
-        },
-        {
-            "name": "Toaster OG Badge",
-            "image": "https://www.toaster.finance/assets/scroll-badge/3.png",
-            "description": "Congratulations, you've achieved OG status on Toaster! This badge is awarded for collecting 300 Butters. Holders of this badge may enjoy exclusive benefits in the future.",
-            "badgeContract": "0xE110648a9563940964D7840f469403AaDC714871",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Toaster Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
-                "origin": "https://toaster.finance/",
-                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
-            },
-            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
-            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
-            "count": 1137
+            "attesterProxy": "0x94a4eFD397a035fFD6174445C9d5Ff3AcF9301e9",
+            "baseURL": "https://api.omnihub.xyz/api/integration/v2/scroll",
+            "count": 2647
         },
         {
             "name": "MiniBridge Silver",
@@ -924,7 +1010,142 @@
             },
             "attesterProxy": "0x6a2b88275dE6BFF1992fb25371DfC0073349B22b",
             "baseURL": "https://op.chaineye.tools/minibridge/scroll",
-            "count": 931
+            "count": 2614
+        },
+        {
+            "name": "Across x Toaster Collab Badge",
+            "image": "https://www.toaster.finance/assets/scroll-badge/4.png",
+            "description": "Celebrate the first collaboration badge on Scroll Canvas! Bridge over $300 to Scroll through Across on Toaster Finance in a single transaction. Don't forget, this transaction must be made on www.toaster.finance to qualify. Join in and be part of this special milestone!",
+            "badgeContract": "0xaDc4687E702db8cE12C6bD5e636547A8238AC31C",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Across",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Across.jpg",
+                "origin": "https://www.toaster.finance",
+                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
+            },
+            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
+            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
+            "count": 2439
+        },
+        {
+            "name": "Human Squad with Izumi",
+            "image": "https://imagedelivery.net/Ebdw_AyMzN9_57Atf3-rVg/6d1ade3b-e3ec-4d37-9228-3fe6ad6efd00/public",
+            "description": "This badge celebrates the collaboration with Izumi on the Scroll network. To qualify, you need to complete two tasks: 1. Hold a .scroll name at https://scroll.xname.app ; 2. Swap at least 10u in any trading pair on iZiSwap on Scroll at https://izumi.finance/trade/swap .",
+            "badgeContract": "0x4B0C949A53c33a5e6eE56df6A95065f207Bc1f65",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XSTAR",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XSTAR.jpg",
+                "origin": "https://xstar.id/",
+                "communityURL": "https://discord.com/invite/KqR8Tr57Kw"
+            },
+            "attesterProxy": "0xd6a2Bd1580b49a89d30caF71fCbB077f39732f02",
+            "baseURL": "https://scroll-canvas-api.xname.app/collab-izumi/api",
+            "count": 2372
+        },
+        {
+            "name": "Scroll C2 Portal",
+            "image": "https://c2.world/metadata/scroll/ScrollUniversePortal.png",
+            "description": "Users who complete quests and mint relevant NFTS on the C².WORLD platform will receive a Scroll C2 Portal badge.  Holders of this badge not only highlight the unique commemorative value and exclusive honor of the first citizens, but also receive a super value reward when the blind box NFT is opened.",
+            "badgeContract": "0x47E294C26872D9dBA67DD44c728c23E01eb9829D",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "C² WORLD",
+                "logo": "https://scroll-eco-list.netlify.app/logos/C² WORLD.png",
+                "origin": "https://c2.world/activity/scroll/c2scrollquest00.html",
+                "communityURL": "https://x.com/c2worldmeta"
+            },
+            "eligibilityCheck": true,
+            "count": 2096
+        },
+        {
+            "name": "Gold Scroll Bridger Badge",
+            "image": "https://cdn.orbiter.finance/badge/gold.png",
+            "description": "Pilots who complete six bridges from/to Scroll Network via Orbiter Finance can claim the Badge.",
+            "badgeContract": "0xfBe58B2E84eecA5DAeCbdcEB77B45481c6c88A5A",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Orbiter Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Orbiter Finance.png",
+                "origin": "https://www.orbiter.finance",
+                "communityURL": "https://discord.com/invite/FbztTBvnBT"
+            },
+            "attesterProxy": "0xdaa058dC7A8FB573f05F171C4E7F41621FB74605",
+            "baseURL": "https://api.orbiter.finance/badge",
+            "count": 1951
+        },
+        {
+            "name": "Across x Toaster Collab Badge Pro",
+            "image": "https://www.toaster.finance/assets/scroll-badge/4.png",
+            "description": "Claim this badge by bridging a cumulative total of more than $1,000 to Scroll using Across Bridge on Toaster Finance. You can achieve this through multiple transactions, but each one must utilize Across Bridge on www.toaster.finance to count.",
+            "badgeContract": "0x7faC05a5c77da3C89Bc344F57bf79619D53D4373",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Across",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Across.jpg",
+                "origin": "https://www.toaster.finance",
+                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
+            },
+            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
+            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
+            "count": 1805
+        },
+        {
+            "name": "Scroll Galaxy Navigator",
+            "image": "https://dweb.link/ipfs/QmUtQsh7UktKg2xhtAbfhDWo1bwxEzkEbQrB1pm9CqoJWT",
+            "description": "This badge is designed for users who bridged a minimum of $100 to Scroll",
+            "badgeContract": "0x68212DD62ca7E3949268834A956b0b9665F7F93A",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Galaxy Exchange",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Galaxy Exchange.jpg",
+                "origin": "https://galaxy.exchange",
+                "communityURL": "https://discord.com/invite/swingxyz"
+            },
+            "attesterProxy": "0x6C72FC3Be251A32F021d2f2ab40cF306dCD86251",
+            "baseURL": "https://swap.prod.swing.xyz/v0/integrations/badge/verification",
+            "count": 1714
+        },
+        {
+            "name": "Toaster OG Badge",
+            "image": "https://www.toaster.finance/assets/scroll-badge/3.png",
+            "description": "Congratulations, you've achieved OG status on Toaster! This badge is awarded for collecting 300 Butters. Holders of this badge may enjoy exclusive benefits in the future.",
+            "badgeContract": "0xE110648a9563940964D7840f469403AaDC714871",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Toaster Finance",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Toaster Finance.png",
+                "origin": "https://toaster.finance/",
+                "communityURL": "https://t.me/+Mv-_ZMfm2ssxODUx"
+            },
+            "attesterProxy": "0xCF27c9bCCCEA79215CB4c48a29ABb485CA060fE8",
+            "baseURL": "https://api.toaster.finance/api/external/scroll-badge",
+            "count": 1521
+        },
+        {
+            "name": "Hippo Realm Holder",
+            "image": "https://storage.googleapis.com/hipposwap-interface-website/images/hippo/badge_hippo_realm.png",
+            "description": "This badge is designed for users holding Hippo Realm NFTs on Scroll.",
+            "badgeContract": "0x5C99a6298BBdA89FCF4398FDDd1997e455c6f155",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Hippo Swap",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Hippo Swap.png",
+                "origin": "https://hipposwap.finance/",
+                "communityURL": "https://link3.to/hipposwap"
+            },
+            "attesterProxy": "0x825fa355BB4FFb7e385c8c4f556f1aDf9897211C",
+            "baseURL": "https://api.hipposwap.finance/api/badge/holder",
+            "count": 1486
         },
         {
             "name": "Senior Scroll Explorer",
@@ -941,7 +1162,7 @@
             },
             "attesterProxy": "0xFA9729Dee92cD868603B8960A3e6234B2B5A4206",
             "baseURL": "https://publicapi.xenobunny.xyz/canvas/lands/senior",
-            "count": 931
+            "count": 1259
         },
         {
             "name": "Liquidity Loremaster",
@@ -958,7 +1179,41 @@
             },
             "attesterProxy": "0x1579792112777Ee1887ea2F13c27331A0a0AC576",
             "baseURL": "https://api.scribe.exchange/api/v1/canvas/liquidity-loremaster",
-            "count": 618
+            "count": 1240
+        },
+        {
+            "name": "MiniBridge Champion",
+            "image": "https://gateway.pinata.cloud/ipfs/QmbD57kEpRZnA4V9WqoNYM1u6RjzC9Uojk3ma5rqW1qW1E/",
+            "description": "MiniBridge Gold badge is for users who have made 10 bridge transactions to scroll on MiniBridge.",
+            "badgeContract": "0x6DFC63778A63538Bfbbe64Abcf9CfBfe523D70F5",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Mini Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Mini Bridge.png",
+                "origin": "https://minibridge.chaineye.tools/?dst=scroll",
+                "communityURL": "https://t.me/chaineye"
+            },
+            "attesterProxy": "0x6a2b88275dE6BFF1992fb25371DfC0073349B22b",
+            "baseURL": "https://op.chaineye.tools/minibridge/scroll",
+            "count": 1139
+        },
+        {
+            "name": "Scroll MasterBridger",
+            "image": "https://retrobridge-pictures.fra1.digitaloceanspaces.com/nft-metadata/Bridger.png",
+            "description": "Scroll MasterBridger is dedicated for everyone who completed at least 2 bridges from any EVM network to Scroll Network on RetroBridge",
+            "badgeContract": "0x4F4d33693A0C454a87Dd39cf21171F0d585Af0bD",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Retro Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Retro Bridge.jpg",
+                "origin": "https://app.retrobridge.io/?tokenFrom=ETH",
+                "communityURL": "https://discord.com/invite/retrobridge"
+            },
+            "attesterProxy": "0xedf57D6ea541C13d26a98Ee4862b2038ab7b087B",
+            "baseURL": "https://backend.retrobridge.io/api/quest/master_bridger",
+            "count": 880
         },
         {
             "name": "Nuri Locker Badge (100)",
@@ -974,7 +1229,56 @@
                 "communityURL": "https://discord.gg/n9wgqpVwsn"
             },
             "eligibilityCheck": true,
-            "count": 548
+            "count": 758
+        },
+        {
+            "name": "ZNS Gift Card Collector",
+            "image": "https://assets.znsconnect.io/gift-card-collector-badge.png",
+            "description": "Unlock this badge by minting ZNS credits. Use your credits for free domain minting. Start collecting now! Mint Credits — worth 3+ USDT on Scroll.",
+            "badgeContract": "0x4293b8907d403b397A4050ebc92a4722aa600720",
+            "category": "Identities",
+            "thirdParty": true,
+            "issuer": {
+                "name": "ZNS Connect",
+                "logo": "https://scroll-eco-list.netlify.app/logos/ZNS Connect.jpg",
+                "origin": "https://www.znsconnect.io/",
+                "communityURL": "https://discord.gg/CefUhrNvK7"
+            },
+            "eligibilityCheck": true,
+            "count": 546
+        },
+        {
+            "name": "Scroll Overlord",
+            "image": "https://xenobunny.s3.amazonaws.com/images/scroll-canvas/scroll-overlord-badge.png",
+            "description": "Participated in at least one Land War season on scroll.",
+            "badgeContract": "0xb2c69173829E23EE2876FBe13Ab474FEe101bc64",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "XenoBunny",
+                "logo": "https://scroll-eco-list.netlify.app/logos/XenoBunny.jpg",
+                "origin": "https://www.xenobunny.xyz/",
+                "communityURL": "https://discord.com/invite/m9hSRPFZ38"
+            },
+            "eligibilityCheck": true,
+            "count": 495
+        },
+        {
+            "name": "Scroll MasterSwapper",
+            "image": "https://retrobridge-pictures.fra1.digitaloceanspaces.com/nft-metadata/Swapper.png",
+            "description": "Scroll MasterSwapper is dedicated for everyone who completed at least 2 swaps from any EVM network to Scroll Network on RetroBridge",
+            "badgeContract": "0x5cEDbA9376e447dd23f196bF66985c31fDFD8559",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Retro Bridge",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Retro Bridge.jpg",
+                "origin": "https://app.retrobridge.io/?tokenFrom=ETH",
+                "communityURL": "https://discord.com/invite/retrobridge"
+            },
+            "attesterProxy": "0xBF6022030E7224a26BF61A5c56A4094F925fF76A",
+            "baseURL": "https://backend.retrobridge.io/api/quest/master_swapper",
+            "count": 367
         },
         {
             "name": "VenisterX Badge",
@@ -990,7 +1294,7 @@
                 "communityURL": "https://discord.gg/venium"
             },
             "eligibilityCheck": true,
-            "count": 173
+            "count": 274
         },
         {
             "name": "Grade POP Badge",
@@ -1007,7 +1311,41 @@
             },
             "attesterProxy": "0x83Ba636662332920fa9130A6145264A6FC8C2C40",
             "baseURL": "https://grade-pop.vercel.app/api",
-            "count": 105
+            "count": 182
+        },
+        {
+            "name": "GBadge",
+            "image": "https://ipfs.io/ipfs/Qmbsw9Ciw3ygckpnhuv9oym6VLYZfHtAg2hvokaovLp62D",
+            "description": "The purpose of this badge is to recognize early backers of Grade NFT",
+            "badgeContract": "0x169c1C4805b64C65af3a291d77f4eCCAC2171a2e",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Grades",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Grades.jpg",
+                "origin": "https://gradeseco.com",
+                "communityURL": "https://discord.com/invite/pXwxXyKAz2"
+            },
+            "attesterProxy": "0x162113a7D1dB829062dBe8581bB650EeB777A6ca",
+            "baseURL": "https://api.gradeseco.com/api",
+            "count": 87
+        },
+        {
+            "name": "GNFT Staker Badge",
+            "image": "https://ipfs.io/ipfs/QmUziXD36JjTE3CC3SHz1thqAcSmzDWbgcWtxvQiNhu5L7",
+            "description": "The purpose of this badge is to recognize the GNFT Staker contributors",
+            "badgeContract": "0x0a204e9Fa41b2A9ee05444125C7701Db322fAF08",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Grades",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Grades.jpg",
+                "origin": "https://www.gradeseco.com/",
+                "communityURL": "https://discord.com/invite/pXwxXyKAz2"
+            },
+            "attesterProxy": "0x733e5015BeF37557bB5E456320B7A45e684f661E",
+            "baseURL": "https://gnft-staker.vercel.app/api",
+            "count": 84
         },
         {
             "name": "Ambient Yeet",
@@ -1024,74 +1362,7 @@
             },
             "attesterProxy": "0xf61B5dAe16948F0f1ed9141634E4647bBaAa4A81",
             "baseURL": "https://ambient-scroll-badge.liquidity.tools/api",
-            "count": 67
-        },
-        {
-            "name": "Hippo Badge",
-            "image": "https://storage.googleapis.com/hipposwap-interface-website/images/hippo/badge_hippo.png",
-            "description": "This badge is designed for users who have swapped a minimum of $100 on HippoSwap",
-            "badgeContract": "0x3eaD1dE2ccC74EC121d433F49B7b9610773fd29e",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Hippo Swap",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Hippo Swap.png",
-                "origin": "https://hipposwap.finance/",
-                "communityURL": "https://link3.to/hipposwap"
-            },
-            "baseURL": "https://api.hipposwap.finance/api/badge",
-            "airdrop": true,
-            "count": 15
-        },
-        {
-            "name": "Scroll Overlord",
-            "image": "https://xenobunny.s3.amazonaws.com/images/scroll-canvas/scroll-overlord-badge.png",
-            "description": "Participated in at least one Land War season on scroll.",
-            "badgeContract": "0xb2c69173829E23EE2876FBe13Ab474FEe101bc64",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "XenoBunny",
-                "logo": "https://scroll-eco-list.netlify.app/logos/XenoBunny.jpg",
-                "origin": "https://www.xenobunny.xyz/",
-                "communityURL": "https://discord.com/invite/m9hSRPFZ38"
-            },
-            "eligibilityCheck": true,
-            "count": 12
-        },
-        {
-            "name": "GNFT Whale",
-            "image": "https://ipfs.io/ipfs/QmSNcrwMMNgeL66HST9vAw3FFepKDPwuiHfJ5r7JgNe82x",
-            "description": "The purpose of this badge is to recognize the GNFT Whale",
-            "badgeContract": "0x72ef8aD3A0C12529C837354b4E0fF13794dA0dd5",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Grades",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Grades.jpg",
-                "origin": "https://www.gradeseco.com/",
-                "communityURL": "https://discord.com/invite/pXwxXyKAz2"
-            },
-            "attesterProxy": "0xca5b0026C2fd5bE9c23F19172a39cfd78e4ebdf0",
-            "baseURL": "https://gnft-whale.vercel.app/api",
-            "count": 11
-        },
-        {
-            "name": "Bronze Scroll Bridger",
-            "image": "https://cdn.orbiter.finance/badge/bronze.png",
-            "description": "Pilots who complete one bridge to Scroll Network via Orbiter Finance can claim the Badge. This badge is upgradable based on your number of bridges.",
-            "badgeContract": "0xfBe58B2E84eecA5DAeCbdcEB77B45481c6c88A5A",
-            "category": "Achievements",
-            "thirdParty": true,
-            "issuer": {
-                "name": "Orbiter Finance",
-                "logo": "https://scroll-eco-list.netlify.app/logos/Orbiter Finance.png",
-                "origin": "https://www.orbiter.finance",
-                "communityURL": "https://discord.com/invite/FbztTBvnBT"
-            },
-            "attesterProxy": "0xdaa058dC7A8FB573f05F171C4E7F41621FB74605",
-            "baseURL": "https://api.orbiter.finance/badge",
-            "count": 3
+            "count": 76
         },
         {
             "name": "Diamond Scroll Bridger Badge",
@@ -1108,7 +1379,122 @@
             },
             "attesterProxy": "0xdaa058dC7A8FB573f05F171C4E7F41621FB74605",
             "baseURL": "https://api.orbiter.finance/badge",
-            "count": 1
+            "count": 63
+        },
+        {
+            "name": "Hippo Badge",
+            "image": "https://storage.googleapis.com/hipposwap-interface-website/images/hippo/badge_hippo.png",
+            "description": "This badge is designed for users who have swapped a minimum of $100 on HippoSwap",
+            "badgeContract": "0x3eaD1dE2ccC74EC121d433F49B7b9610773fd29e",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Hippo Swap",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Hippo Swap.png",
+                "origin": "https://hipposwap.finance/",
+                "communityURL": "https://link3.to/hipposwap"
+            },
+            "baseURL": "https://api.hipposwap.finance/api/badge",
+            "airdrop": true,
+            "count": 30
+        },
+        {
+            "name": "GNFT Whale",
+            "image": "https://ipfs.io/ipfs/QmSNcrwMMNgeL66HST9vAw3FFepKDPwuiHfJ5r7JgNe82x",
+            "description": "The purpose of this badge is to recognize the GNFT Whale",
+            "badgeContract": "0x72ef8aD3A0C12529C837354b4E0fF13794dA0dd5",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Grades",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Grades.jpg",
+                "origin": "https://www.gradeseco.com/",
+                "communityURL": "https://discord.com/invite/pXwxXyKAz2"
+            },
+            "attesterProxy": "0xca5b0026C2fd5bE9c23F19172a39cfd78e4ebdf0",
+            "baseURL": "https://gnft-whale.vercel.app/api",
+            "count": 12
+        },
+        {
+            "name": "Loop Aficionado Scroll",
+            "image": "https://dweb.link/ipfs/QmbzRyMcKYuwx4MCHkUKuekCJDdzuBKuFNMLnxdWH1Xxdd",
+            "description": "Loop Aficionado Badge on Scroll for Points Program",
+            "badgeContract": "0x826BD204a329f15a2D5bcDaab83F00056FD4674E",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Loop",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Loop.jpg",
+                "origin": "https://loopfi.xyz",
+                "communityURL": "https://discord.gg/Knv95D63EX"
+            },
+            "eligibilityCheck": true,
+            "count": 0
+        },
+        {
+            "name": "Scroll Sloth Badge",
+            "image": "https://dweb.link/ipfs/QmRXEcUqdPAj3EKJX1BByeTcMGpPv5uLGByCYfzg79RNQa",
+            "description": "This badge is created specifically for users who hold Scroll Sloth NFTs on the Scroll network.",
+            "badgeContract": "0x3A103fA688136340A841105e28C2Adf784332AE5",
+            "category": "Others",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Scroll Sloth",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Scroll Sloth.jpg",
+                "origin": "https://scrollsloth.com/",
+                "communityURL": "https://discord.gg/VdD9wtZn"
+            },
+            "eligibilityCheck": true,
+            "count": 0
+        },
+        {
+            "name": "Rho Keeper",
+            "image": "https://dweb.link/ipfs/QmQgVnfnJyav2CkmxjSygz7ngdhNqTtjvMs5bVgGnwPUKP",
+            "description": "The Rho Keeper badge is awarded to users who hold Rho Pets. To unlock a Rho Pet, simply supply at least $150 of any asset on Rho Markets.",
+            "badgeContract": "0x2c4e569209491e68436D55c38A2904E7dB1F616E",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Rho Markets",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Rho Markets.png",
+                "origin": "https://www.rhomarkets.xyz/",
+                "communityURL": "https://discord.gg/rhomarkets"
+            },
+            "attesterProxy": "0xBB6Fd7d4055adc99ebb39fE9B7637b61eF11151b",
+            "baseURL": "https://badge.rhomarket.xyz/api",
+            "count": 0
+        },
+        {
+            "name": "Varonve Minter",
+            "image": "https://www.varonve.io/scroll/canvas/badge/MinterBadge.jpg",
+            "description": "This badge is designed for users who minted Varonve NFT during the mint",
+            "badgeContract": "0xb6d09E38e18644110d241619d67B7226cDE2d650",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Varonve",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Varonve.png",
+                "origin": "https://www.varonve.io/",
+                "communityURL": "https://discord.gg/varonve"
+            },
+            "eligibilityCheck": true,
+            "count": 0
+        },
+        {
+            "name": "Varonve Holder",
+            "image": "https://www.varonve.io/scroll/canvas/badge/HolderBadge.jpg",
+            "description": "This badge is designed for users who hold at least 1 Varonve at the time it is given.",
+            "badgeContract": "0x428C923BF6a70AE3B62a22cdE9E56Ec13A94DF54",
+            "category": "Achievements",
+            "thirdParty": true,
+            "issuer": {
+                "name": "Varonve",
+                "logo": "https://scroll-eco-list.netlify.app/logos/Varonve.png",
+                "origin": "https://www.varonve.io/",
+                "communityURL": "https://discord.gg/varonve"
+            },
+            "eligibilityCheck": true,
+            "count": 0
         }
     ]
 }
