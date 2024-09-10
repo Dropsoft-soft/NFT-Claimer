@@ -17,19 +17,6 @@ class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
         super().__init__(id, key, 'scroll')
         self.headers = {
-            'accept': '*/*',
-            'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
-            'cache-control': 'no-cache',
-            'origin': 'https://scroll.io',
-            'pragma': 'no-cache',
-            'priority': 'u=1, i',
-            'referer': 'https://scroll.io/',
-            'sec-ch-ua': '"Not)A;Brand";v="99", "Google Chrome";v="127", "Chromium";v="127"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"macOS"',
-            'sec-fetch-dest': 'empty',
-            'sec-fetch-mode': 'cors',
-            'sec-fetch-site': 'cross-site',
             'user-agent': user_agent_rotator.get_random_user_agent(),
             'Content-Type': 'application/json'
         }
@@ -46,17 +33,14 @@ class ScrollCanvas(WebClient):
    
     @retry
     async def is_elligable_address(self, domain, badge):
-        try:
-            proxy = None
-            if USE_PROXY == True:
-                proxy = WALLET_PROXIES[self.key]
-            url = f'{domain}/check?badge={badge}&recipient={self.address}'
-            
-            status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
-            return response
-        except Exception as error:
-            logger.error(error)
-            return False
+        proxy = None
+        if USE_PROXY == True:
+            proxy = WALLET_PROXIES[self.key]
+        url = f'{domain}/check?badge={badge}&recipient={self.address}'
+        
+        status_code, response = await global_request(wallet=self.address, method='get', url=url, headers=self.headers, proxy=proxy)
+        return response
+  
     @retry
     async def get_tx_for_badge(self, domain, badge):
         try:
@@ -73,6 +57,14 @@ class ScrollCanvas(WebClient):
     async def mintUserName(self):
         mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xb23af8707c442f59bdfc368612bd8dbcca8a7a5a'), abi=SCROLL_MAIN_ABI)
         nickname = str(random.choice(MINT_RANDOM_NICKNAME))
+        is_minted = await self.is_claimed()
+        if is_minted:
+            logger.warning('Skip. profile minted')
+            return
+        nickname_used = await self.verify_nickname(nickname)
+        if nickname_used:
+            logger.info(f'nickname: {nickname} used. retry')
+            return await self.mintUserName()
         code, response = await self.getSignature()
         bytes_for = response['signature']
         base_fee = (await self.web3.eth.max_priority_fee)
@@ -86,19 +78,29 @@ class ScrollCanvas(WebClient):
             'value': intToDecimal(0.0005, 18),
         })
         gas = await self.web3.eth.estimate_gas(contract_txn)
-        contract_txn['gas'] = int(gas*1.01)
+        contract_txn['gas'] = int(gas*1.1)
 
         status, tx_link = await self.send_tx(contract_txn)
         if status == 1:
             logger.success(f"[{self.id}] {self.address} | claimed nft nickname: {nickname} | {tx_link}")
             await asyncio.sleep(5)
-            return True
         else:
             logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
-            return False
         # except Exception as error:
         #     logger.error(error)
         #     return False
+    
+    async def verify_nickname(self, nickname):
+        mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xB23AF8707c442f59BDfC368612Bd8DbCca8a7a5a'), abi=SCROLL_MAIN_ABI)
+        isused = await mint_contract.functions.isUsernameUsed(nickname).call()
+        return isused
+    
+    async def is_claimed(self):
+        mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xB23AF8707c442f59BDfC368612Bd8DbCca8a7a5a'), abi=SCROLL_MAIN_ABI)
+        profile = await mint_contract.functions.getProfile(self.address).call()
+        isused = await mint_contract.functions.isProfileMinted(profile).call()
+        return isused
+
     @retry  
     async def mintFromJSON(self, json):
         try:
@@ -130,34 +132,38 @@ class ScrollCanvas(WebClient):
                 return False
         
     async def mint_all_available_badge(self):
-        badge_array = BADGE_LIST['badges']
-        logger.info(f'Received badges: {len(badge_array)}')
-        minted_counter = 0
-        for jsonBadge in badge_array:
-            name = jsonBadge['name']
-            if 'baseURL' in jsonBadge:
-                badge = jsonBadge['badgeContract']
-                domain = jsonBadge['baseURL']
-                json = await self.is_elligable_address(domain, badge)
-                if 'eligibility' in json:
-                    is_elligable = json['eligibility']
-                    logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
-                    if is_elligable == True:
-                        await sleep(5, 30)
-                        get_tx_data = await self.get_tx_for_badge(domain, badge)
-                        logger.info('Get transaction data')
-                        minted_badge = await self.mintFromJSON(get_tx_data)
-                        if minted_badge:
-                            logger.success(f'[{self.id}] Badge: {badge} minted')
-                            minted_counter += 1
+        try:
+            badge_array = BADGE_LIST['badges']
+            logger.info(f'Received badges: {len(badge_array)}')
+            minted_counter = 0
+            for jsonBadge in badge_array:
+                name = jsonBadge['name']
+                if 'baseURL' in jsonBadge:
+                    badge = jsonBadge['badgeContract']
+                    domain = jsonBadge['baseURL']
+                    json = await self.is_elligable_address(domain, badge)
+                    if 'eligibility' in json:
+                        is_elligable = json['eligibility']
+                        logger.info(f'[{self.id}] Eligable for mint {name}: {is_elligable}')
+                        if is_elligable == True:
                             await sleep(5, 30)
-                        else:
-                            logger.info(f'[{self.id}] Badge: {badge} not minted')
-                    else: 
-                        logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
+                            get_tx_data = await self.get_tx_for_badge(domain, badge)
+                            logger.info('Get transaction data')
+                            minted_badge = await self.mintFromJSON(get_tx_data)
+                            if minted_badge:
+                                logger.success(f'[{self.id}] Badge: {badge} minted')
+                                minted_counter += 1
+                                await sleep(5, 30)
+                            else:
+                                logger.info(f'[{self.id}] Badge: {badge} not minted')
+                        else: 
+                            logger.info(f'[{self.id}] Badge: {badge} user not elligable for mint')
+                else:
+                    logger.info(f'Skip badge: {name}. ')
+            if minted_counter > 0:
+                logger.success(f'[{self.id} - {self.address}] Minted {minted_counter}')
             else:
-                logger.info(f'Skip badge: {name}. ')
-        if minted_counter > 0:
-            logger.success(f'[{self.id} - {self.address}] Minted {minted_counter}')
-        else:
-            logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
+                logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
+        except Exception as error:
+            logger.error(error)
+
