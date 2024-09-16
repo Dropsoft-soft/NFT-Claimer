@@ -84,6 +84,7 @@ class ScrollCanvas(WebClient):
         if status == 1:
             logger.success(f"[{self.id}] {self.address} | claimed nft nickname: {nickname} | {tx_link}")
             await asyncio.sleep(5)
+            return
         else:
             logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
         # except Exception as error:
