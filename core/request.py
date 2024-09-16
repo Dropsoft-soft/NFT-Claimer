@@ -1,6 +1,6 @@
 from random import uniform
 from aiohttp import ClientSession
-import aiohttp
+from curl_cffi.requests import AsyncSession
 from loguru import logger
 import time
 import json
@@ -11,9 +11,8 @@ MAX_RETRY = 4
 ERROR_CODE_EXCEPTION = -1
 ERROR_CODE_FAILED_REQUEST = -2
 
-
 async def global_request(wallet, method="get", request_retry=0, need_sleep= False, **kwargs):
-    async with ClientSession(trust_env=True) as session:
+    async with AsyncSession(verify=False) as session:
         if request_retry > MAX_RETRY:
             return
         retry = 0
@@ -28,8 +27,8 @@ async def global_request(wallet, method="get", request_retry=0, need_sleep= Fals
                     response = await session.put(**kwargs)
                 elif method == "options":
                     response = await session.options(**kwargs)
-
-                status_code = response.status
+            
+                status_code = response.status_code
 
                 if status_code == 201 or status_code == 200:
 
@@ -38,7 +37,7 @@ async def global_request(wallet, method="get", request_retry=0, need_sleep= Fals
                     if need_sleep:
                         time.sleep(timing)
                     try:
-                        return status_code, await response.json(content_type=None)
+                        return status_code, response.json()
                     except json.decoder.JSONDecodeError:
                         logger.info('The request success but not contain a JSON')
                         break
@@ -64,7 +63,7 @@ async def global_request(wallet, method="get", request_retry=0, need_sleep= Fals
                 logger.error(f'{wallet} - HTTPSConnectionPool - {kwargs["url"]} failed to make request | {error}')
                 if need_sleep:
                     time.sleep(25)
-                await global_request(method=method, request_retry=request_retry + 1, proxy=proxy, need_sleep=True, **kwargs)
+                await global_request(method=method, request_retry=request_retry + 1, need_sleep=True, **kwargs)
                 break
 
             except Exception as error:

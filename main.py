@@ -49,12 +49,12 @@ def get_module():
         pointer="✅ "
     ).ask()
     if result == "exit":
-        print("\nSubscribe – https://t.me/@web3sftwr\n")
+        print("\nSubscribe – https://t.me/web3sftwr\n")
         sys.exit()
     return result
 
 if __name__ == "__main__":
-    print("Subscribe https://t.me/@web3sftwr\n")
+    print("Subscribe https://t.me/web3sftwr\n")
 
     module = get_module()
     if sys.platform == 'win32':
