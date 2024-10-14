@@ -137,3 +137,8 @@ class BaseSummer(WebClient):
         contract = Web3().to_checksum_address(response['callData']['to'])
         value = int(response['callData']['value'], 16)
         await self.logic_for_mint(contract, value, data)
+
+    async def mint_welcome_to_new_base(self):
+        data = '0x574fed17000000000000000000000000'+self.address[2:] +'000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000600000000000000000000000000000000000000000000000000000000000000000'
+        contract = Web3().to_checksum_address('0x803Fc79D31AB30a39B3BD2A90171470cC82Ba44a')
+        await self.logic_for_mint(contract, 100000000000000, data)

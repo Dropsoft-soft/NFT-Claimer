@@ -25,6 +25,12 @@ async def scroll_mint_badges(account_id, key):
     )
     await web3.mint_all_available_badge()
 
+async def welcome_to_base_summer_nft(account_id, key):
+    web3 = BaseSummer(
+        account_id, key
+    )
+    await web3.mint_welcome_to_new_base()
+
 async def base_summer_nft(account_id, key):
     web3 = BaseSummer(
         account_id, key
