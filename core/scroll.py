@@ -78,7 +78,7 @@ class ScrollCanvas(WebClient):
             'value': intToDecimal(0.0005, 18),
         })
         gas = await self.web3.eth.estimate_gas(contract_txn)
-        contract_txn['gas'] = int(gas*1.1)
+        contract_txn['gas'] = int(gas*FEE_MULTIPLIER)
 
         status, tx_link = await self.send_tx(contract_txn)
         if status == 1:
@@ -90,7 +90,28 @@ class ScrollCanvas(WebClient):
         # except Exception as error:
         #     logger.error(error)
         #     return False
-    
+    async def mins_omihub_nft(self):
+        contract_txn = {
+            "chainId": self.chain_id,
+            "from": self.address,
+            "to": "0xD932ad965CE8a342ad49E14c98Bcf179Eb668C56",
+            "value": 180000000000000,
+            "data": "0xa0712d680000000000000000000000000000000000000000000000000000000000000001",
+            "gas": 0,
+            'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
+            'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee),  
+            'nonce': await self.web3.eth.get_transaction_count(self.address),
+        }
+        gas = await self.web3.eth.estimate_gas(contract_txn)
+        contract_txn['gas'] = int(gas*1.1)
+        status, tx_link = await self.send_tx(contract_txn)
+        if status == 1:
+            logger.success(f"[{self.id}] {self.address} | claimed nft: {tx_link}")
+            await asyncio.sleep(5)
+            return
+        else:
+            logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
+
     async def verify_nickname(self, nickname):
         mint_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xB23AF8707c442f59BDfC368612Bd8DbCca8a7a5a'), abi=SCROLL_MAIN_ABI)
         isused = await mint_contract.functions.isUsernameUsed(nickname).call()

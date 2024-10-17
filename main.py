@@ -44,6 +44,7 @@ def get_module():
             Choice("4) Bera NFT", bera_nft),
             Choice("5) Mint Scroll claim badges", scroll_mint_badges),
             Choice("6) Mint Welcome to New Base NFT", welcome_to_base_summer_nft),
+            Choice("7) Mint omnihub Scroll OG NFT",  scroll_omnihub_nft),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",
