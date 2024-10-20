@@ -31,6 +31,12 @@ async def scroll_omnihub_nft(account_id, key):
     )
     await web3.mins_omihub_nft()
 
+async def scroll_register_delegatee(account_id, key):
+    web3 = ScrollCanvas(
+        account_id, key
+    )
+    await web3.create_delegatee()
+
 async def welcome_to_base_summer_nft(account_id, key):
     web3 = BaseSummer(
         account_id, key

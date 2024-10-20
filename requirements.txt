@@ -13,3 +13,4 @@ eth_abi
 questionary
 random-user-agent
 curl_cffi
+requests

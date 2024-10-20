@@ -12,6 +12,7 @@ from core.utils import BADGE_LIST, WALLET_PROXIES, intToDecimal, sleep
 from user_data.config import FEE_MULTIPLIER, MINT_REFS_FOR_NICKNAME, USE_PROXY
 from user_data.config import MINT_RANDOM_NICKNAME
 user_agent_rotator = UserAgent(software_names=['chrome'], operating_systems=['windows', 'linux'])
+import requests
 
 class ScrollCanvas(WebClient):
     def __init__(self, id:int, key: str):
@@ -188,4 +189,73 @@ class ScrollCanvas(WebClient):
                 logger.info(f'[{self.id} - {self.address}] Minted {minted_counter}')
         except Exception as error:
             logger.error(error)
+    @retry
+    async def create_delegatee(self):
+        signed_string = await self.sign_message("{\n\t\"agreeCodeConduct\": true,\n\t\"daoSlug\": \"SCROLL\",\n\t\"discord\": \"\",\n\t\"delegateStatement\": \"A brief intro to yourself: \\n\\nA message to the community and ecosystem:\\n\\nDiscourse username:\",\n\t\"email\": \"\",\n\t\"twitter\": \"\",\n\t\"warpcast\": \"\",\n\t\"topIssues\": [],\n\t\"topStakeholders\": []\n}")
+        url = "https://gov.scroll.io/delegates/create"
+        # payload = """[\n    {\n        \"address\": \"{self.}\",\n        \"delegateStatement\": {\n            \"agreeCodeConduct\": true,\n            \"daoSlug\": \"SCROLL\",\n            \"discord\": \"\",\n            \"delegateStatement\": \"A brief intro to yourself: \\n\\nA message to the community and ecosystem:\\n\\nDiscourse username:\",\n            \"email\": \"\",\n            \"twitter\": \"\",\n            \"warpcast\": \"\",\n            \"topIssues\": [],\n            \"topStakeholders\": [],\n            \"openToSponsoringProposals\": null,\n            \"mostValuableProposals\": [],\n            \"leastValuableProposals\": []\n        },\n        \"signature\": \"0xf4a6ff177dc4c55ca6f644a0907e33a4690a387e1080a3180159fa5232d9b59246a75ad747eb4528edb5c2caf35a4a99867cbc01abf6ce9fc938c54a32084ddc1c\",\n        \"message\": \"{\\n\\t\\\"agreeCodeConduct\\\": true,\\n\\t\\\"daoSlug\\\": \\\"SCROLL\\\",\\n\\t\\\"discord\\\": \\\"\\\",\\n\\t\\\"delegateStatement\\\": \\\"A brief intro to yourself: \\\\n\\\\nA message to the community and ecosystem:\\\\n\\\\nDiscourse username:\\\",\\n\\t\\\"email\\\": \\\"\\\",\\n\\t\\\"twitter\\\": \\\"\\\",\\n\\t\\\"warpcast\\\": \\\"\\\",\\n\\t\\\"topIssues\\\": [],\\n\\t\\\"topStakeholders\\\": []\\n}\"\n    }\n]"""
+        payload = json.dumps([
+    {
+        "address": f"{self.address}",
+        "delegateStatement": {
+            "agreeCodeConduct": True,
+            "daoSlug": "SCROLL",
+            "discord": "",
+            "delegateStatement": "A brief intro to yourself: \n\nA message to the community and ecosystem:\n\nDiscourse username:",
+            "email": "",
+            "twitter": "",
+            "warpcast": "",
+            "topIssues": [],
+            "topStakeholders": [],
+            "openToSponsoringProposals": None,
+            "mostValuableProposals": [],
+            "leastValuableProposals": []
+        },
+        "signature": f"{signed_string}",
+        "message": "{\n\t\"agreeCodeConduct\": true,\n\t\"daoSlug\": \"SCROLL\",\n\t\"discord\": \"\",\n\t\"delegateStatement\": \"A brief intro to yourself: \\n\\nA message to the community and ecosystem:\\n\\nDiscourse username:\",\n\t\"email\": \"\",\n\t\"twitter\": \"\",\n\t\"warpcast\": \"\",\n\t\"topIssues\": [],\n\t\"topStakeholders\": []\n}"
+    }
+])
+        headers = {
+            'accept': 'text/x-component',
+            'accept-language': 'en-US,en;q=0.9,uk;q=0.8',
+            'cache-control': 'no-cache',
+            'content-type': 'text/plain;charset=UTF-8',
+            'next-action': '885a57e1f202724ff4ba962c69d432e5ea192f28',
+            'origin': 'https://gov.scroll.io',
+            'pragma': 'no-cache',
+            'priority': 'u=1, i',
+            'referer': 'https://gov.scroll.io/delegates/create',
+            'sec-ch-ua': '"Google Chrome";v="129", "Not=A?Brand";v="8", "Chromium";v="129"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"macOS"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
+        }
 
+        proxies = None
+        if USE_PROXY == True:
+            proxy = WALLET_PROXIES[self.key]
+            proxies = {
+                "http": proxy,
+                "https": proxy
+            }
+
+        response = requests.request("POST", url, headers=headers, data=payload, proxies=proxies)
+        if response.status_code == 200:
+            logger.info(f'Registred delegatee {self.address}')
+        else:
+            logger.error(f'Not registred {response.status_code}')
+
+# {
+# 	"agreeCodeConduct": true,
+# 	"daoSlug": "SCROLL",
+# 	"discord": "",
+# 	"delegateStatement": "A brief intro to yourself: \n\nA message to the community and ecosystem:\n\nDiscourse username:",
+# 	"email": "",
+# 	"twitter": "",
+# 	"warpcast": "",
+# 	"topIssues": [],
+# 	"topStakeholders": []
+# }
