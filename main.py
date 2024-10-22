@@ -46,6 +46,7 @@ def get_module():
             Choice("6) Mint Welcome to New Base NFT", welcome_to_base_summer_nft),
             Choice("7) Mint omnihub Scroll OG NFT",  scroll_omnihub_nft),
             Choice("8) Scroll Register delegatee", scroll_register_delegatee),
+            Choice("9) Scroll Claim Drop", scroll_mint_drop),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",

@@ -37,6 +37,12 @@ async def scroll_register_delegatee(account_id, key):
     )
     await web3.create_delegatee()
 
+async def scroll_mint_drop(account_id, key):
+    web3 = ScrollCanvas(
+        account_id, key
+    )
+    await web3.get_drop()
+
 async def welcome_to_base_summer_nft(account_id, key):
     web3 = BaseSummer(
         account_id, key

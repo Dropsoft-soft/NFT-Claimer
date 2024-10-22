@@ -15,6 +15,7 @@
 - Mint all available NFTs for scroll campain
 - Mint Bera NFT https://www.beramonium.io/
 - Mint Welcome Base NFT (1000 Points)
+- Claim scroll drop
 
 ## User_data
 

@@ -233,7 +233,6 @@ class ScrollCanvas(WebClient):
             'sec-fetch-site': 'same-origin',
             'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36'
         }
-
         proxies = None
         if USE_PROXY == True:
             proxy = WALLET_PROXIES[self.key]
@@ -248,14 +247,68 @@ class ScrollCanvas(WebClient):
         else:
             logger.error(f'Not registred {response.status_code}')
 
-# {
-# 	"agreeCodeConduct": true,
-# 	"daoSlug": "SCROLL",
-# 	"discord": "",
-# 	"delegateStatement": "A brief intro to yourself: \n\nA message to the community and ecosystem:\n\nDiscourse username:",
-# 	"email": "",
-# 	"twitter": "",
-# 	"warpcast": "",
-# 	"topIssues": [],
-# 	"topStakeholders": []
-# }
+    async def get_drop(self):
+        url = "https://claim.scroll.io/?step=4"
+        headers = {
+        'Content-Type': 'text/plain;charset=UTF-8',
+        'Accept': 'text/x-component',
+        'Sec-Fetch-Site': 'same-origin',
+        'Accept-Language': 'en-US,en-GB;q=0.9,en;q=0.8',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Sec-Fetch-Mode': 'cors',
+        'Origin': 'https://claim.scroll.io',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15',
+        'Content-Length': '46',
+        'Referer': 'https://claim.scroll.io/?step=4',
+        'Sec-Fetch-Dest': 'empty',
+        'Priority': 'u=3, i',
+        'Next-Action': '2ab5dbb719cdef833b891dc475986d28393ae963'
+        }
+
+        proxies = None
+        if USE_PROXY == True:
+            proxy = WALLET_PROXIES[self.key]
+            proxies = {
+                "http": proxy,
+                "https": proxy
+            }
+        payload = f"[\"{self.address}\"]"
+        response = requests.request("POST", url, headers=headers, data=payload, proxies=proxies)
+        if response.status_code == 200:
+            dataObj = response.text.split('1:')[1]
+            try:
+                json_result = json.loads(dataObj)
+                status = json_result['claim_status']
+                if status == "CLAIMED":
+                    logger.warning('Drop already claimed.skip')
+                else:
+                    amount = int(json_result['amount'])
+                    merkle_proof = json_result['proof']
+                    await self.claim_tx(amount, merkle_proof)
+            except Exception as error:
+                logger.error('Not elligable for claim, or onchain error')
+
+    async def claim_tx(self, amount, merkle_proof):
+        claim_contract = self.web3.eth.contract(address=Web3.to_checksum_address('0xE8bE8eB940c0ca3BD19D911CD3bEBc97Bea0ED62'), abi=CLAIM_ABI)
+        contract_txn = await claim_contract.functions.claim(self.address, amount, merkle_proof).build_transaction({
+            'nonce': await self.web3.eth.get_transaction_count(self.address),
+            'from': self.address,
+            'gas': 0,
+            'maxFeePerGas': int(await self.web3.eth.gas_price*FEE_MULTIPLIER),
+            'maxPriorityFeePerGas': int(await self.web3.eth.max_priority_fee),  
+            'chainId': self.chain_id,
+            'value': 0,
+        })
+        gas = await self.web3.eth.estimate_gas(contract_txn)
+        contract_txn['gas'] = int(gas*FEE_MULTIPLIER)
+
+        status, tx_link = await self.send_tx(contract_txn)
+        if status == 1:
+            logger.success(f"[{self.id}] {self.address} | claimed {tx_link}")
+            await asyncio.sleep(5)
+            return
+        else:
+            logger.error(f"[{self.id}] {self.address} | tx is failed | {tx_link}")
+
+    
+CLAIM_ABI = '[{"inputs":[{"internalType":"bytes32","name":"_merkleRoot","type":"bytes32"},{"internalType":"address","name":"_token","type":"address"},{"internalType":"address","name":"_owner","type":"address"},{"internalType":"uint256","name":"_claimEnd","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"target","type":"address"}],"name":"AddressEmptyCode","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"AddressInsufficientBalance","type":"error"},{"inputs":[],"name":"AlreadyClaimed","type":"error"},{"inputs":[],"name":"ClaimFinished","type":"error"},{"inputs":[],"name":"ClaimNotFinished","type":"error"},{"inputs":[],"name":"EmptyProof","type":"error"},{"inputs":[],"name":"FailedInnerCall","type":"error"},{"inputs":[],"name":"InvalidAmount","type":"error"},{"inputs":[],"name":"InvalidProof","type":"error"},{"inputs":[],"name":"InvalidToken","type":"error"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"inputs":[{"internalType":"address","name":"token","type":"address"}],"name":"SafeERC20FailedOperation","type":"error"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Claimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferStarted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Withdrawn","type":"event"},{"inputs":[],"name":"CLAIM_END","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"MERKLE_ROOT","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"TOKEN","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"acceptOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_account","type":"address"},{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"bytes32[]","name":"_merkleProof","type":"bytes32[]"}],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"hasClaimed","outputs":[{"internalType":"bool","name":"claimed","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pendingOwner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw","outputs":[],"stateMutability":"nonpayable","type":"function"}]'
