@@ -47,6 +47,7 @@ def get_module():
             Choice("7) Mint omnihub Scroll OG NFT",  scroll_omnihub_nft),
             Choice("8) Scroll Register delegatee", scroll_register_delegatee),
             Choice("9) Scroll Claim Drop", scroll_mint_drop),
+            Choice("10) Odos Claim Drop", claim_odos_drop),
             Choice("99) Exit", "exit"),
         ],
         qmark="⚙️ ",
