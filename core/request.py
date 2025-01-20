@@ -29,7 +29,7 @@ async def global_request(wallet, method="get", request_retry=0, need_sleep= Fals
                     response = await session.options(**kwargs)
             
                 status_code = response.status_code
-                print(status_code, response.json())
+                # print(status_code, response.json())
                 if status_code == 201 or status_code == 200:
 
                     timing = uniform(TIMEOUT[0], TIMEOUT[1])

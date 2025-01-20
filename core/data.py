@@ -6,6 +6,7 @@ DATA = {
     'scroll'        : {'rpc': 'https://rpc.scroll.io',          'scan': 'https://scrollscan.com/tx',        'token': 'ETH', 'chain_id': 534352},
     'taiko'         : {'rpc': 'https://rpc.mainnet.taiko.xyz',  'scan': 'https://taikoscan.io/tx',          'token': 'ETH', 'chain_id': 167000},
     'bera_testnet'  : {'rpc': 'https://bartio.rpc.berachain.com/', 'scan': 'https://bartio.beratrail.io/tx/', 'token': 'BERA', 'chain_id': 80084},
+    'arbitrum'      : {'rpc': 'https://arb1.arbitrum.io/rpc', 'scan': 'https://arbiscan.io/tx', 'token': 'ETH', 'chain_id': 42161},
 
 }
 

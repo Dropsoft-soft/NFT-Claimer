@@ -1,4 +1,5 @@
 
+from core.arbitrum import Arbitrum
 from core.baseSummer import BaseSummer
 from core.beranft import BeraTestnet
 from core.scroll import ScrollCanvas
@@ -78,3 +79,7 @@ async def bera_nft(account_id, key):
 async def claim_odos_drop(account_id, key):
     web3 = BaseSummer(account_id, key)
     await web3.claimDrop()
+
+async def claim_orbiter_drop(account_id, key):
+    web3 = Arbitrum(account_id, key)
+    await web3.claim_drop()
